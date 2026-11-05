@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#305496">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="买菜比价">
+<!-- manifest 由发布版提供 -->
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADt0lEQVR4nO3dwU0bQRiG4SXikm6gjnCEImgIisiV1EE5ueZgCSHZcsDfzvifmec5gr0avC//7IIRN3ePLxtc6se1F8DYBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQERur72Act5/P59/wP3Ta5+VDOHGP909+G83x5S0CeiCbo6tXNK6Ae2SzmdrZrToRfTu9TQ6Zn3LTaAOp3mpUbRWQF+s50wB+REms1BA+96fu9s/WCWgM+c7PNPtjjyEJS6im57jfL8b2ro/id5xPBwOtUIux+afQCfPa4vN5eQxp69q8oC61XPmyHM3NHlAtDZzQJ3Hz5njTzyEZg7oWJ/76hXu3j9MG1C1b/pq69nLtAEd6zkY1hlCCwVEC3MGVHO/qLmq0JwBHeu/pyyyi60SEI0IiIiAiAz5fqApr0YPhrtyGiygidP5bKCMRtrCFqlnG+orHWMCDfSC7qv+KBppAlHQAAEtO362Eb726gHVfwVbK/4KVA+I4koHVPybr5vKr0PpgKhPQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARG6vvYCFPTyc+ODbW/d1RATU3clujj87SEkC6uh8OicfXD4j10C9fKue8FkdmUDthREcnv7z1y5r2Z0J1NhOI+T9759djrM7ARERUEu7XsHUHEICaqbB9W/BhgREREBtNLv9rjaEBEREQEQE1EDjHx+X2sUERERARAREREBEBEREQERKB3T/9HrtJVyk8dsI7yu9N6h0QNRXPaBRh9Ayqge0DdpQs12s1P61DREQld3cPb5cew1f9f77+dpL+Ka9fylWbfxsY02g8fayXTeygvVsYwW0bdv90+t4GU1tpC1sULu8+6Lm+Nn8YWEHh3N/cUZl0zkYbAsb12UdFK9nM4F6+tYoqp/OgYB6+yjjZEmjdPNBQFczXCsnuQYiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiLyDwOVruUe+HX4AAAAAElFTkSuQmCC"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAIAAADdvvtQAAADt0lEQVR4nO3dwU0bQRiG4SXikm6gjnCEImgIisiV1EE5ueZgCSHZcsDfzvifmec5gr0avC//7IIRN3ePLxtc6se1F8DYBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQERur72Act5/P59/wP3Ta5+VDOHGP909+G83x5S0CeiCbo6tXNK6Ae2SzmdrZrToRfTu9TQ6Zn3LTaAOp3mpUbRWQF+s50wB+REms1BA+96fu9s/WCWgM+c7PNPtjjyEJS6im57jfL8b2ro/id5xPBwOtUIux+afQCfPa4vN5eQxp69q8oC61XPmyHM3NHlAtDZzQJ3Hz5njTzyEZg7oWJ/76hXu3j9MG1C1b/pq69nLtAEd6zkY1hlCCwVEC3MGVHO/qLmq0JwBHeu/pyyyi60SEI0IiIiAiAz5fqApr0YPhrtyGiygidP5bKCMRtrCFqlnG+orHWMCDfSC7qv+KBppAlHQAAEtO362Eb726gHVfwVbK/4KVA+I4koHVPybr5vKr0PpgKhPQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARAREREBEBEREQEQERERARG6vvYCFPTyc+ODbW/d1RATU3clujj87SEkC6uh8OicfXD4j10C9fKue8FkdmUDthREcnv7z1y5r2Z0J1NhOI+T9759djrM7ARERUEu7XsHUHEICaqbB9W/BhgREREBtNLv9rjaEBEREQEQE1EDjHx+X2sUERERARAREREBEBEREQERKB3T/9HrtJVyk8dsI7yu9N6h0QNRXPaBRh9Ayqge0DdpQs12s1P61DREQld3cPb5cew1f9f77+dpL+Ka9fylWbfxsY02g8fayXTeygvVsYwW0bdv90+t4GU1tpC1sULu8+6Lm+Nn8YWEHh3N/cUZl0zkYbAsb12UdFK9nM4F6+tYoqp/OgYB6+yjjZEmjdPNBQFczXCsnuQYiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiIiICICIiIgIgIiIiAiAiLyDwOVruUe+HX4AAAAAElFTkSuQmCC"><link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoi5Lmw6I+c5q+U5Lu35pysIiwic2hvcnRfbmFtZSI6IuS5sOiPnOavlOS7tyIsImRlc2NyaXB0aW9uIjoi6K6w5b2V5ZCE6LaF5biC5ZWG5ZOB5Lu35qC877yM6Ieq5Yqo5qCH5Ye65pyA5L6/5a6c55qE5bqXIiwic3RhcnRfdXJsIjoiLiIsInNjb3BlIjoiLiIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwib3JpZW50YXRpb24iOiJwb3J0cmFpdCIsImJhY2tncm91bmRfY29sb3IiOiIjZjVmN2ZhIiwidGhlbWVfY29sb3IiOiIjMzA1NDk2IiwibGFuZyI6InpoLUNOIiwiaWNvbnMiOlt7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBSUFBQURkdnZ0UUFBQUR0MGxFUVZSNG5PM2R3VTBiUVJpRzRTWGlrbTZnam5DRUltZ0lpc2lWMUVFNXVlWmdDU0haY3NEZnp2aWZtZWM1Z3IwYXZDLy83SUlSTjNlUEx4dGM2c2UxRjhEWUJFUkVRRVFFUkVSQVJBUkVSRUJFQkVSRVFFUUVSRVJBUkFSRVJFQkVCRVJFUUVRRVJFUkFSQVJFUkVCRUJFUkVRRVFFUkVSQVJBUkVSRUJFQkVSRVFFUUVSRVJBUkFSRVJFQkVCRVJFUUVRRVJFUkFSQVJFUkVCRUJFUkVRRVFFUkVSQVJBUkVSRUJFQkVSRVFFUUVSRVJBUkFSRVJFQkVCRVJFUUVSdXI3MkFjdDUvUDU5L3dQM1RhNStWRE9IR1A5MDkrRzgzeDVTMENlaUNibzZ0WE5LNkFlMlN6bWRyWnJUb1JmVHU5VFE2Wm4zTFRhQU9wM21wVWJSV1FGK3M1MHdCK1JFbXMxQkErOTZmdTlzL1dDV2dNK2M3UE5QdGpqeUVKUzZpbTU3amZMOGIycm8vaWQ1eFBCd090VUl1eCthZlFDZlBhNHZONWVReHA2OXE4b0M2MVhQbXlITTNOSGxBdERaelFKM0h6NW5qVHp5RVpnN29XSi83NmhYdTNqOU1HMUMxYi9wcTY5bkx0QUVkNnprWTFobENDd1ZFQzNNR1ZITy9xTG1xMEp3QkhldS9weXl5aTYwU0VJMElpSWlBaUF6NWZxQXByMFlQaHJ0eUdpeWdpZFA1YktDTVJ0ckNGcWxuRytvckhXTUNEZlNDN3F2K0tCcHBBbEhRQUFFdE8zNjJFYjcyNmdIVmZ3VmJLLzRLVkErSTRrb0hWUHlicjV2S3IwUHBnS2hQUUVRRVJFUkFSQVJFUkVCRUJFUkVRRVFFUkVSQVJBUkVSRUJFQkVSRVFFUUVSRVJBUkFSRVJFQkVCRVJFUUVRRVJFUkFSQVJFUkVCRUJFUkVRRVFFUkVSQVJBUkVSRUJFQkVSRVFFUUVSRVJBUkFSRVJFQkVCRVJFUUVRRVJFUkFSRzZ2dllDRlBUeWMrT0RiVy9kMVJBVFUzY2x1amo4N1NFa0M2dWg4T2ljZlhENGoxMEM5Zkt1ZThGa2RtVUR0aFJFY252N3oxeTVyMlowSjFOaE9JK1Q5NzU5ZGpyTTdBUkVSVUV1N1hzSFVIRUlDYXFiQjlXL0JoZ1JFUkVCdE5MdjlyamFFQkVSRVFFUUUxRURqSHgrWDJzVUVSRVJBUkFSRVJFQkVCRVJFUUVSS0IzVC85SHJ0SlZ5azhkc0k3eXU5TjZoMFFOUlhQYUJSaDlBeXFnZTBEZHBRczEyczFQNjFEUkVRbGQzY1BiNWNldzFmOWY3NytkcEwrS2E5ZnlsV2JmeHNZMDJnOGZheVhUZXlndlZzWXdXMGJkdjkwK3Q0R1UxdHBDMXNVTHU4KzZMbStObjhZV0VIaDNOL2NVWmwwemtZYkFzYjEyVWRGSzluTTRGNit0WW9xcC9PZ1lCNit5ampaRW1qZFBOQlFGY3pYQ3NudVFZaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlJaUlDSUNJaUlnSWdJaUlpQWlBaUlpSUNJQ0lpSWdJZ0lpSWlBaUFpSWlJQ0lDSWlJZ0lnSWlJaUFpQWlMeUR3T1ZydVVlK0hYNEFBQUFBRWxGVGtTdVFtQ0MiLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSBtYXNrYWJsZSJ9LHsic3JjIjoiZGF0YTppbWFnZS9wbmc7YmFzZTY0LGlWQk9SdzBLR2dvQUFBQU5TVWhFVWdBQUFnQUFBQUlBQ0FJQUFBQjdHa090QUFBTE5rbEVRVlI0bk8zY3k1RVVTUlpBVVJoak05cUFITU9TRnFJVm9vWG9MUzBINHZSMkZtbFdWc05BVTJSRlJ2anplODZhajBkVzVMdmhuZ2x2MzMvNi9BYUFubjlkdlFBQXJpRUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDQUJBbEFBQlJBZ0FRSlFBQVVRSUFFQ1VBQUZFQ0FCQWxBQUJSQWdBUTllN3FCY0FadnY3NSt5LzkrZysvL2ZHZ2xjQTYzcjcvOVBucU5jREJmblhjdjRRa3NCOEJZQk9QR1BvL0lnYnNRUUFZN015aC95Tml3RndDd0R3cnpQMy9wd1NNSXdCTXN1Ym9mMDRHR0VRQW1HSDkwZitjRERDQ0FMQzZXYVAvT1JsZ2NRTEF1dWFPL3Vka2dHVUpBQ3ZhWS9RL0p3TXNTQUJZeTM2ai96a1pZQ24rTHlBV3N2ZjBmeE80UUdheEEyQUp0Y2xvSzhBSzdBQzRYbTM2djBsZU1nc1NBQzZXSFlYWkMyY2Rqb0M0akFsNDR6aUlxOWdCY0EzVC80bVhncXZZQVhDQlMwYmV5eCswRjE4ZUhFVUFPTnM1NC9YWWVUcHh6ZkJUQXNDcEhqMUpIejFEcDY4Zm5oTUF6dk80NlhuKzNOenBXc2dTQUU3eW9JbDU3YmpjOHFMb0VBRE9jUGlnWEcxRWJuK0JiTW5YUUhtNHduQThmRW0rRzhvSjdBQjRyR01IMllLai94dTE2MlcwZDFjdkFGNWt5aWk4cmRQek95TTRBdUtCanBxRFU2Yi9rNk1XTENROGxDTWdIdVdRNFRWdTlIL0RpOERLN0FCNENJUHY1cEJMc0EvZ1FRU0FSVzB3L1crMnVSRDJJd0FjNy9WUHJKc056ZGRmamswQWp5QUFITXowL3k0TllFRUN3RnEyblA0M0cxOGFRd2tBUjNybFUrcjJJL0tWRjJnVHdMRUVnRlZzUC8xdklwZkpDQUxBWVY3emZKb2FpNis1V0pzQURpUUFYQzgxL1crQ2w4eUNCSUJqZURJOWpaZWFvd2dBRjhzK0MyY3ZuSFVJQUFlNCs1azBQZ1R2dm55YkFBNGhBQUJSQXNCcmVmeC9EWnNBTGlRQVhNUDBmK0tsNENvQ0FCQWxBTHpLZlFjUm5ubS9jZDhMNGhTSVZ4SUFnQ2dCQUlnU0FPN24vT2RBVG9FNG53QUFSQWtBcC9MNC93KzhPSnhNQUFDaUJJQTdPWDFlaEI4RWR4TUFnQ2dCNER6T3VIL0tTOFNaQkFBZ1NnQUFvZ1NBZS9qZ2NTbCtITnhIQURpSjArMFg4a0p4R2dFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQXFMZnZQMzIrZWcwQVhNQU9BQ0RxM2RVTDRDVCtzU2d2NXgralJUZ0MycG1oeit1SndjWUVZRTlHUDhlU2dTMEp3RmJNZlI1TkNYYmlRK0I5bVA2Y3dHMjJFenVBSFhoUGNqNWJnUTNZQVl4bituTUpOOTRHQkdBMmIwSXU1UGFiVGdBRzgvYmpjbTdDMFFSZ0ttODhGdUZXbkVzQVJ2S1dZeWx1eUtFRVlCNXZOaGJrdHB4SUFJYnhObU5aYnM1eEJHQVNiekFXNXhhZFJRQUFvZ1JnRE05V2pPQkdIVVFBWnZDbVloQzM2eFFDQUJBbEFBQlJBakNBRFRYanVHbEhFQUNBS0FGWW5TY3Bobkxycms4QUFLSUVBQ0JLQUFDaUJHQnBUbEVaelEyOE9BRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUlnU0FJQW9BUUNJRWdDQUtBRUFpQklBZ0NnQkFJZ1NBSUFvQVFDSUVnQ0FLQUVBaUJJQWdDZ0JBSWdTQUlBb0FRQ0lFZ0NBS0FFQWlCSUFnQ2dCQUloNmQvVUNnSE45L1BpaVgvYmx5NFBYd2ZVRUFIYjN3b24vejc5TEQzWWtBTENwKytiK1QvODBKZGlJQU1CMmpoMzkzLzNEWldBTEFnQzdlT2pjLzlIZnBRU1RDUURNZCtiby8rNWZMUU16K1Jvb0RIZmg5RjlxRGZ3Nk93QVlhNm14YXlzd2tCMEF6TFRVOUgreTVxcjRBUUdBZ1ZhZXN5dXZqZi9sQ0FoR0dURmVIUWNOWVFjQWM0eVkvazltclRaSkFHQ0lpZk4wNHBwTEJBQW1HRHRKdi83OTE5Vkw0SWNFQUpZM2R2cmZhTUN5QkFEV05uejYzMmpBbWdRQUlFb0FZR0ZiUFA3ZjJBUXNTQUJnVlJ0Ti94c05XSTBBd0pLMm0vNDNHckFVQVFDSUVnQll6NmFQL3pjMkFlc1FBRmpNMXRQL1JnTVdJUUFBVVFJQUt3azgvdC9ZQkt4QUFBQ2lCQUFnU2dCZ0dabnpueHVuUUpjVEFJQW9BWUExeEI3L2Iyd0NyaVVBQUZFQ0FCQWxBTENBNVBuUGpWT2dDd2tBUUpRQUFFUUpBRUNVQUFCRUNRQmNMZndKOEkzUGdhOGlBQUJSQWdBUUpRQUFVUUlBRUNVQUFGRUNBQkFsQUFCUkFnQVFKUUFBVVFJQUVDVUFBRkVDc0xRUHYvMXg5UktBYlFrQVhPM0xsNnRYY0xFUC8vN1AxVXVJRWdDQUtBRUFpQktBMWZrWUFIZ1FBUUNJRW9BQmJBTDJGLzRjMkNmQUZ4SUFnQ2dCQUlnU2dCbWNBdTB2ZVFyay9PZGFBakNHQmdESEVnQllSbXdUNFBIL2NnSXdpVTBBY0NBQkdFWURnS01Jd0R3YXNMUE1LWkR6bnhVSXdFZ2FBTHllQUV5bEFkc0tiQUk4L2k5Q0FBYlRnRzF0M1FEVGZ4MENNSnNHQUhjVGdQRTBZRStiYmdJOC9pL2w3ZnRQbjY5ZUE4ZjQrdWZ2VnkrQm8zMzhlUFVLam1UNnI4WU9ZQisyQWh2YWFCOWcraS9vM2RVTDRFaFBEYkFiQUg3S0VkRE9aR0FUOHcrQ1BQNnZTUUFxeEdDMnlRMHcvWmNsQURERDE3Ly91bm9KOXpEOVYrWkRZSmhoNGlTZHVPWVVBWUF4WnMzVFdhdHQ4aTBnbU9RMlZSYy9Eakw2cDdBRGdIbFduckFycjQxdkNBQ010T2FjWFhOVi9JZ2pJSmhxcWVNZ28zOGlPd0NZYllYSnU4SWF1SU1kQUl4MzRWYkE2QjlOQUdBVFQ3UDRoQktZKzNzUUFOak5RemNFUnY5T0JBRDJkT3lHd056ZmtnREE1cjZaM1Mvc2dZbGZJQURRWXJMenhOZEFBYUlFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb2dRQUlFb0FBS0lFQUNCS0FBQ2lCQUFnU2dBQW9nUUFJRW9BQUtJRUFDQktBQUNpQkFBZ1NnQUFvZ1FBSUVvQUFLSUVBQ0JLQUFDaUJBQWdTZ0FBb3Y0TDRvSEUzODJIT3dBQUFBQUFTVVZPUks1Q1lJST0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIiwicHVycG9zZSI6ImFueSBtYXNrYWJsZSJ9XX0=">
+<title>买菜比价本</title>
+<style>
+:root{
+  --brand:#305496;
+  --brand-light:#EDF2F9;
+  --red:#FF4B4B;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --line:#e5e7eb;
+  --bg:#f5f7fa;
+  --card:#ffffff;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html,body{margin:0;padding:0;height:100%;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);font-size:15px;
+  overscroll-behavior:none;
+}
+/* ---------- 顶栏 ---------- */
+.topbar{
+  position:sticky;top:0;z-index:50;
+  background:linear-gradient(135deg,#305496,#4573b8);
+  color:#fff;padding:calc(var(--safe-top) + 8px) 12px 8px;
+  box-shadow:0 2px 12px rgba(48,84,150,.25);
+}
+.topbar h1{margin:0;font-size:16px;font-weight:600;display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;}
+.topbar h1 .ver{font-size:9px;background:rgba(255,255,255,.25);padding:2px 7px;border-radius:10px;flex:0 0 auto;}
+.topbar h1 small{font-size:11px;font-weight:400;opacity:.85;margin-left:auto;flex:0 0 auto;}
+.topbar .more{flex:0 0 auto;font-size:18px;line-height:1;padding:2px 8px;border-radius:8px;background:rgba(255,255,255,.16);cursor:pointer;user-select:none;}
+.topbar .more:active{background:rgba(255,255,255,.3);}
+/* 清空数据弹层 */
+.clear-item{padding:13px 4px;font-size:15px;border-bottom:1px solid var(--line);cursor:pointer;display:flex;align-items:center;gap:8px;}
+.clear-item:last-child{border-bottom:none;}
+.clear-item.danger{color:#dc2626;font-weight:600;}
+.clear-item small{font-size:11px;color:var(--muted);font-weight:400;margin-left:auto;}
+.btn{
+  border:none;border-radius:9px;padding:9px 14px;font-size:13px;
+  background:rgba(255,255,255,.16);color:#fff;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:5px;cursor:pointer;
+  transition:background .15s;
+}
+.btn:active{background:rgba(255,255,255,.3);}
+.btn.solid{background:#fff;color:var(--brand);font-weight:600;}
+
+/* ---------- 搜索 ---------- */
+.search-wrap{padding:12px 14px 0;}
+.search-box{
+  display:flex;align-items:center;gap:8px;background:var(--card);
+  border-radius:12px;padding:10px 14px;box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.search-box input{border:none;outline:none;flex:1;font-size:15px;background:transparent;color:var(--text);}
+.search-box .ico{color:var(--muted);font-size:16px;}
+.clear-x{display:none;color:var(--muted);font-size:18px;padding:0 4px;cursor:pointer;}
+
+/* ---------- 筛选 chips ---------- */
+.chips{display:flex;gap:8px;padding:10px 14px;overflow-x:auto;scrollbar-width:none;}
+.chips::-webkit-scrollbar{display:none;}
+.chip{
+  padding:6px 13px;border-radius:20px;background:#fff;border:1px solid var(--line);
+  font-size:13px;color:var(--muted);white-space:nowrap;cursor:pointer;transition:all .15s;
+}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:500;}
+
+/* ---------- 表格容器 ---------- */
+.table-wrap{
+  margin:0 10px 16px;background:var(--card);border-radius:12px;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.scroll-x{
+  overflow:auto;-webkit-overflow-scrolling:touch;border-radius:12px;
+  max-height:none;
+}
+/* 表头吸顶：容器高度由 JS 动态设置（iframe 里 100dvh 不可靠） */
+.scroll-x.sticky-on{overflow-y:auto;}
+table{border-collapse:separate;border-spacing:0;width:max-content;min-width:100%;font-size:13px;}
+thead th{
+  background:var(--brand);color:#fff;font-weight:500;padding:10px 8px;
+  text-align:center;white-space:nowrap;position:sticky;top:0;z-index:10;
+  font-size:12px;
+}
+/* 左侧固定：商品列 */
+th.fix-l, td.fix-l{
+  position:sticky;left:0;z-index:11;background:#fff;
+  box-shadow:2px 0 6px rgba(0,0,0,.07);
+  text-align:left;padding:8px 12px;min-width:150px;max-width:186px;white-space:normal;
+}
+thead th.fix-l{background:var(--brand);z-index:22;white-space:nowrap;}
+tbody td{
+  padding:9px 8px;border-bottom:1px solid var(--line);text-align:center;white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none;}
+tr.cat-start td{border-top:2px solid var(--brand);}
+.cat-h td{
+  background:#e9eff7;color:var(--brand);font-size:11px;font-weight:600;
+  padding:5px 12px;text-align:left;position:sticky;left:0;
+}
+.item-name{font-weight:500;font-size:13px;display:inline;line-height:1.35;}
+.item-sub{font-size:11px;color:var(--muted);display:block;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* 价格单元格 */
+.price-cell{position:relative;cursor:pointer;min-width:66px;}
+.price-val{font-variant-numeric:tabular-nums;font-size:13.5px;}
+.price-best{background:var(--red)!important;color:#fff;font-weight:700;border-radius:6px;}
+.price-empty{color:#d1d5db;font-size:16px;}
+.thumb{
+  width:38px;height:38px;border-radius:6px;object-fit:cover;display:block;
+  border:1px solid var(--line);
+}
+.thumb-empty{
+  width:38px;height:38px;border-radius:6px;border:1px dashed #c7d2e0;
+  display:flex;align-items:center;justify-content:center;color:#9aa8bd;font-size:16px;
+  background:#fafcff;
+}
+
+/* ---------- 底部操作条 ---------- */
+.fab-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:7px 6px calc(7px + var(--safe-bottom));
+  background:rgba(255,255,255,.96);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(6,1fr);gap:2px;
+}
+.tab{
+  border:none;background:transparent;color:#4b5563;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  font-size:11px;padding:5px 0;border-radius:9px;font-family:inherit;
+}
+.tab span{font-size:20px;line-height:1;}
+.tab:active{background:#eef2f8;}
+
+/* iOS 防自动缩放：输入类控件字号必须 >=16px，否则聚焦瞬间页面被放大、布局错位 */
+input,select,textarea{font-size:16px !important;}
+
+/* ---------- 弹层 ---------- */
+.mask{
+  position:fixed;inset:0;background:rgba(17,24,39,.5);z-index:100;
+  display:none;align-items:flex-end;justify-content:center;
+}
+.mask.show{display:flex;}
+.sheet{
+  background:#fff;width:100%;max-width:560px;border-radius:18px 18px 0 0;
+  padding:20px 18px calc(20px + var(--safe-bottom));
+  max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  animation:slideUp .22s ease;
+}
+@keyframes slideUp{from{transform:translateY(40px);opacity:.6}to{transform:translateY(0);opacity:1}}
+
+/* 商品编辑页：不用遮罩卡片，直接是整页（fixed 全屏白底 + 页面自身滚动）。
+   避开了"半屏卡片内部滚动 + 固定遮罩"这套结构在 iOS 输入法下的光标错位问题。 */
+.mask.page-mode{
+  background:#fff;display:block;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:calc(var(--safe-top) + 4px) 16px calc(16px + var(--safe-bottom));
+}
+.mask.page-mode.show{display:block;}
+.mask.page-mode > .sheet{
+  max-height:none;max-width:560px;margin:0 auto;border-radius:0;
+  padding:0 0 calc(8px + var(--safe-bottom));overflow:visible;animation:none;background:transparent;
+}
+.mask.page-mode .sheet h3{
+  position:sticky;top:0;z-index:5;background:#fff;
+  padding:6px 0 10px;margin:0 0 12px;border-bottom:1px solid var(--line);
+}
+.sheet h3{margin:0 0 16px;font-size:17px;display:flex;align-items:center;}
+.sheet h3 span{margin-left:auto;font-size:22px;color:#9ca3af;cursor:pointer;line-height:1;}
+.field{margin-bottom:14px;}
+.field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;font-weight:500;}
+.field input,.field select,.field textarea{
+  width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 12px;
+  font-size:15px;outline:none;background:#fafbfc;color:var(--text);
+  font-family:inherit;
+}
+.field input:focus,.field select:focus{border-color:var(--brand);background:#fff;}
+.field .hint{font-size:11px;color:#9ca3af;margin-top:5px;}
+.sheet-actions{display:flex;gap:10px;margin-top:20px;}
+.sheet-actions button{
+  flex:1;padding:13px;border-radius:10px;border:none;font-size:15px;font-weight:600;cursor:pointer;
+}
+.btn-primary{background:var(--brand);color:#fff;}
+.btn-danger{background:#fee2e2;color:#dc2626;flex:0 0 auto;padding:13px 18px;}
+.btn-cancel{background:#f3f4f6;color:#4b5563;}
+
+/* 图片上传 */
+.photo-area{display:flex;align-items:center;gap:12px;}
+.photo-preview{
+  width:76px;height:76px;border-radius:10px;object-fit:cover;border:1px solid var(--line);
+}
+.photo-placeholder{
+  width:76px;height:76px;border-radius:10px;border:1px dashed #c7d2e0;background:#fafcff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:#9aa8bd;font-size:11px;gap:2px;cursor:pointer;
+}
+.photo-placeholder .plus{font-size:20px;line-height:1;}
+
+/* 查看大图 */
+.viewer{
+  position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;display:none;
+  align-items:center;justify-content:center;flex-direction:column;padding:20px;
+}
+.viewer.show{display:flex;}
+.viewer img{max-width:100%;max-height:80vh;border-radius:8px;object-fit:contain;}
+.viewer .cap{color:#fff;margin-top:16px;font-size:14px;text-align:center;}
+.viewer .close{position:absolute;top:calc(var(--safe-top) + 14px);right:18px;color:#fff;font-size:30px;line-height:1;}
+
+/* toast */
+.toast{
+  position:fixed;left:50%;bottom:calc(84px + var(--safe-bottom));transform:translateX(-50%) translateY(10px);
+  background:rgba(31,41,55,.94);color:#fff;padding:11px 20px;border-radius:22px;
+  font-size:13px;z-index:300;opacity:0;pointer-events:none;transition:all .22s;white-space:nowrap;
+  max-width:88vw;overflow:hidden;text-overflow:ellipsis;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* 空态 */
+.empty{padding:50px 20px;text-align:center;color:var(--muted);font-size:14px;}
+.empty .big{font-size:40px;margin-bottom:10px;opacity:.35;}
+
+/* 门店管理列表 */
+.shop-row{
+  display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);
+}
+.shop-row .nm{flex:1;font-size:15px;}
+.shop-row .del{color:#dc2626;font-size:13px;padding:6px 10px;border-radius:7px;background:#fef2f2;cursor:pointer;}
+.shop-row .edit{color:var(--brand);font-size:13px;padding:6px 10px;border-radius:7px;background:#eef2f8;cursor:pointer;}
+.shop-move{display:flex;flex-direction:column;flex:0 0 auto;gap:2px;}
+.shop-move span{width:22px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;border-radius:5px;background:#f1f5f9;color:#64748b;cursor:pointer;user-select:none;}
+.shop-move span:active{background:var(--brand);color:#fff;}
+.shop-move span.off{opacity:.25;pointer-events:none;}
+.shop-row .shop-note{display:block;font-size:11px;color:#9ca3af;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.shop-thumb{width:44px;height:44px;border-radius:8px;object-fit:cover;border:1px solid var(--line);cursor:pointer;flex:0 0 auto;}
+.shop-thumb-empty{width:44px;height:44px;border-radius:8px;border:1px dashed #c7d2e0;background:#fafcff;display:flex;align-items:center;justify-content:center;color:#9aa8bd;font-size:17px;cursor:pointer;flex:0 0 auto;}
+.shop-row input::placeholder{color:#c0c8d4;}
+.spec-wrap{position:static;}
+.spec-sugg{
+  display:none;margin-top:6px;
+  flex-direction:column;gap:7px;
+  overflow-x:auto;overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.spec-sugg.show{display:flex;}
+#noteSugg{flex-direction:row;flex-wrap:wrap;}
+.spec-sugg::-webkit-scrollbar{display:none;}
+.spec-row{
+  display:flex;align-items:center;gap:6px;
+  overflow-x:auto;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:1px;
+}
+.spec-row::-webkit-scrollbar{display:none;}
+.spec-col-title{
+  flex:0 0 auto;font-size:10.5px;color:#9aa8bd;width:26px;
+  line-height:1.1;
+}
+.spec-chip{
+  flex:0 0 auto;
+  padding:5px 11px;border-radius:15px;background:#f1f5f9;color:#374151;
+  font-size:12.5px;cursor:pointer;white-space:nowrap;border:1px solid #e2e8f0;
+  text-align:center;
+}
+.spec-chip.on{background:var(--brand);color:#fff;border-color:var(--brand);font-weight:600;}
+.spec-chip:active{background:var(--brand);color:#fff;}
+.shop-row .ok-btn{color:#fff;font-size:13px;padding:6px 12px;border-radius:7px;background:var(--brand);cursor:pointer;}
+.shop-row .cancel-btn{color:#6b7280;font-size:13px;padding:6px 10px;border-radius:7px;background:#f3f4f6;cursor:pointer;}
+.shop-row input{flex:1;border:1px solid var(--line);border-radius:8px;padding:9px 10px;font-size:15px;font-family:inherit;background:#fafbfc;}
+.shop-row input:focus{border-color:var(--brand);background:#fff;outline:none;}
+.add-shop{display:flex;gap:8px;margin-top:14px;}
+.add-shop input{flex:1;border:1px solid var(--line);border-radius:9px;padding:11px;font-size:15px;font-family:inherit;}
+.add-shop button{border:none;background:var(--brand);color:#fff;border-radius:9px;padding:0 20px;font-size:14px;font-weight:600;}
+
+/* 价格编辑格子 */
+.price-edit-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 8px;}
+.pe-item{display:flex;flex-direction:column;gap:4px;}
+.pe-item label{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.pe-line{display:flex;align-items:center;gap:6px;}
+.pe-line input{flex:1 1 0;min-width:0;width:auto;border:1px solid var(--line);border-radius:8px;padding:9px 6px;font-size:15px;background:#fafbfc;outline:none;font-family:inherit;text-align:center;}
+.pe-line input:focus{border-color:var(--brand);background:#fff;}
+.tag-toggle{
+  flex:0 0 auto;font-size:11px;padding:8px 10px;border-radius:8px;
+  background:#f3f4f6;color:#6b7280;cursor:pointer;border:1px solid var(--line);user-select:none;white-space:nowrap;
+}
+.tag-toggle.on{background:#fee2e2;color:#dc2626;border-color:#fca5a5;font-weight:600;}
+.sp-tag{
+  font-style:normal;font-size:9px;color:#fff;background:#e8590c;border-radius:4px;
+  padding:1px 3px;margin-left:2px;vertical-align:2px;font-weight:600;
+}
+.price-best .sp-tag{background:#fff;color:#FF4B4B;}
+.hist-shop{font-size:13px;font-weight:600;color:var(--brand);margin:14px 0 4px;}
+.hist-row{
+  display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:8px;
+  background:#f8fafc;margin-bottom:4px;font-size:13.5px;
+}
+.hist-date{color:#6b7280;font-size:12px;font-variant-numeric:tabular-nums;}
+.tag-badge{
+  font-size:10px;color:#dc2626;background:#fee2e2;border-radius:4px;padding:1px 5px;font-weight:600;
+}
+.hist-row b{margin-left:auto;font-variant-numeric:tabular-nums;}
+.hist-row b.hp{color:#C00000;}
+.hist-row b.hp2{color:#1f2937;}
+
+@media(min-width:700px){
+  .table-wrap{margin:0 20px 100px;}
+  .search-wrap{padding:16px 20px 0;}
+  .chips{padding:12px 20px;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1>🛒 买菜比价本 <small id="stat"></small><span class="ver" id="ver"></span><span class="more" onclick="openMore()">⋯</span></h1>
+</div>
+
+<div class="search-wrap">
+  <div class="search-box">
+    <span class="ico">🔍</span>
+    <input id="q" placeholder="搜商品 / 品牌 / 规格…" oninput="render()">
+    <span class="clear-x" id="clearX" onclick="clearSearch()">✕</span>
+  </div>
+</div>
+
+<div class="chips" id="chips" style="padding-bottom:4px"></div>
+<div class="chips" id="subchips" style="padding-top:0"></div>
+
+<div class="table-wrap">
+  <div class="scroll-x">
+    <table id="tbl">
+      <thead id="thead"></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="fab-bar">
+  <button class="tab" onclick="openItem()"><span>＋</span>新增</button>
+  <button class="tab" onclick="openShops()"><span>🏪</span>门店</button>
+  <button class="tab" onclick="exportImage()"><span>📸</span>截图</button>
+  <button class="tab" onclick="exportJSON()"><span>💾</span>备份</button>
+  <button class="tab" onclick="importJSON()"><span>📥</span>导入</button>
+  <button class="tab" onclick="openBest()"><span>🏆</span>最便宜</button>
+</div>
+
+<!-- 更多菜单 -->
+<div class="mask" id="moreMask" onclick="if(event.target===this)closeMask('moreMask')">
+  <div class="sheet">
+    <h3>更多<span onclick="closeMask('moreMask')">×</span></h3>
+    <div class="clear-item" onclick="doClear('items')">
+      <span>🗑</span>清空商品与价格<small>保留门店</small>
+    </div>
+    <div class="clear-item" onclick="doClear('history')">
+      <span>📊</span>清空价格历史<small id="histCount"></small>
+    </div>
+    <div class="clear-item danger" onclick="doClear('all')">
+      <span>⚠️</span>清空全部数据<small>含门店</small>
+    </div>
+  </div>
+</div>
+
+<!-- 商品编辑 -->
+<div class="mask" id="itemMask" onclick="if(event.target===this)closeMask('itemMask')">
+  <div class="sheet">
+    <h3 id="itemTitle">新增商品<span onclick="closeMask('itemMask')">×</span></h3>
+    <div class="field"><label>大类</label>
+      <select id="f_cat" onchange="onMajorChange()"></select>
+    </div>
+    <div class="field"><label>小类</label>
+      <select id="f_sub"></select>
+    </div>
+    <div class="field"><label>品牌（可空）</label><input id="f_brand" placeholder="如 粤盐"></div>
+    <div class="field"><label>商品名</label><input id="f_name" placeholder="如 白菜（绍菜/黄芽白）"></div>
+    <div class="field"><label>规格（点下方候选，或直接输入）</label>
+      <div class="spec-wrap">
+        <input id="f_spec" placeholder="如 500克（1斤）" autocomplete="off"
+          onfocus="showSpecSugg()" oninput="showSpecSugg()">
+        <div class="spec-sugg" id="specSugg"></div>
+      </div>
+    </div>
+    <div class="field"><label>备注（可空，多为包装）</label>
+      <div class="spec-wrap">
+        <input id="f_note" placeholder="如 一包 / 一瓶" autocomplete="off"
+          onfocus="showNoteSugg()" oninput="showNoteSugg()">
+        <div class="spec-sugg" id="noteSugg"></div>
+      </div>
+    </div>
+    <div class="field"><label>参考图（可空）</label>
+      <div class="photo-area">
+        <div id="photoBox"></div>
+        <div style="flex:1">
+          <input type="file" id="f_photo" accept="image/*" style="display:none" onchange="pickPhoto(this)">
+          <button class="btn" style="background:#eef2f8;color:#305496;padding:9px 14px"
+            onclick="document.getElementById('f_photo').click()">📷 拍照 / 选图</button>
+          <div class="hint" style="margin-top:6px">图片会自动压缩，存在手机本地</div>
+        </div>
+      </div>
+    </div>
+    <div class="sheet-actions">
+      <button class="btn-danger" id="delBtn" onclick="deleteItem()">删除</button>
+      <button class="btn-cancel" onclick="closeMask('itemMask')">取消</button>
+      <button class="btn-primary" onclick="saveItem()">保存</button>
+    </div>
+  </div>
+</div>
+
+<!-- 价格编辑 -->
+<div class="mask" id="priceMask" onclick="if(event.target===this)closeMask('priceMask')">
+  <div class="sheet">
+    <h3 id="priceTitle">录入价格<span onclick="closeMask('priceMask')">×</span></h3>
+    <div class="price-edit-grid" id="peGrid"></div>
+    <div class="hint" style="margin-top:12px">留空的格子表示还没记这家的价；填了数字才会参与比价。改价会自动记入历史，调价当天记得点亮「特价」。</div>
+    <button class="btn" style="background:#eef2f8;color:#305496;width:100%;margin-top:10px;justify-content:center" onclick="openHistory()">📜 查看价格历史</button>
+    <div class="sheet-actions">
+      <button class="btn-cancel" onclick="closeMask('priceMask')">取消</button>
+      <button class="btn-primary" onclick="savePrices()">保存价格</button>
+    </div>
+  </div>
+</div>
+
+<!-- 价格历史 -->
+<div class="mask" id="histMask" onclick="if(event.target===this)closeMask('histMask')">
+  <div class="sheet">
+    <h3 id="histTitle">价格历史<span onclick="closeMask('histMask')">×</span></h3>
+    <div id="histBody"></div>
+  </div>
+</div>
+
+<!-- 门店管理 -->
+<div class="mask" id="shopMask" onclick="if(event.target===this)closeMask('shopMask')">
+  <div class="sheet">
+    <h3>门店管理<span onclick="closeMask('shopMask')">×</span></h3>
+    <div id="shopList"></div>
+    <div class="add-shop">
+      <input id="newShop" placeholder="新门店名称">
+      <button onclick="addShop()">添加</button>
+    </div>
+    <div class="hint" style="margin-top:10px">点门店名可直接修改，改完自动保存；删除门店会同时删掉它下面所有价格记录。</div>
+  </div>
+</div>
+
+<!-- 最便宜面板 -->
+<div class="mask" id="bestMask" onclick="if(event.target===this)closeMask('bestMask')">
+  <div class="sheet">
+    <h3>🏆 当前最便宜的<span onclick="closeMask('bestMask')">×</span></h3>
+    <div id="bestBody"></div>
+  </div>
+</div>
+
+<div class="viewer" id="viewer" onclick="closeViewer()">
+  <span class="close">×</span>
+  <img id="viewerImg" src="" alt="">
+  <div class="cap" id="viewerCap"></div>
+</div>
+
+<div style="height:130px"></div>
+<div class="toast" id="toast"></div>
+<input type="file" id="jsonFile" accept=".json" style="display:none" onchange="doImport(this)">
+<input type="file" id="shopPhotoFile" accept="image/*" style="display:none" onchange="pickShopPhoto(this)">
+
+<script>
+
+</script>
+<script>
+/* 版本号：日期 + 当日小版本，每次改动递增后一位（v1105.1 → v1105.2 → …） */
+const APP_VER = "v1106.31";
+const APP_BUILD = "2026-11-06 00:57";
+
+/* ============ 存储层：IndexedDB ============ */
+const DB_NAME = "grocery_db";
+const DB_VER = 1;
+const STORE = "kv";
+let db = null;
+
+function openDB() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open(DB_NAME, DB_VER);
+    req.onupgradeneeded = e => {
+      const d = e.target.result;
+      if (!d.objectStoreNames.contains(STORE)) d.createObjectStore(STORE);
+    };
+    req.onsuccess = e => { db = e.target.result; resolve(db); };
+    req.onerror = () => reject(req.error);
+  });
+}
+
+function idbGet(key) {
+  return new Promise(res => {
+    const tx = db.transaction(STORE, "readonly");
+    const r = tx.objectStore(STORE).get(key);
+    r.onsuccess = () => res(r.result);
+    r.onerror = () => res(null);
+  });
+}
+
+function idbSet(key, val) {
+  return new Promise(res => {
+    const tx = db.transaction(STORE, "readwrite");
+    tx.objectStore(STORE).put(val, key);
+    tx.oncomplete = () => res(true);
+    tx.onerror = () => res(false);
+  });
+}
+
+/* ============ 状态 ============ */
+let state = null;
+let editingIdx = -1;
+let editingPricesIdx = -1;
+let tmpPhoto = "";
+const MAJORS = ["食品","日用品"];
+const SUBS = {
+  "食品": ["蔬菜","水果","肉禽","水产","蛋类","豆制品","米面粮油","南北干货","速冻食品","烘焙面点","乳品冷饮","零食","熟食卤味","调味品"],
+  "日用品": ["个护","家清","纸品"]
+};
+let filterMajor = "全部";
+let filterSub = "全部";
+
+const $ = id => document.getElementById(id);
+
+function uid() { return Date.now().toString(36) + Math.random().toString(36).slice(2, 7); }
+
+/* ============ 启动 ============ */
+async function boot() {
+  // 申请持久化存储：告诉浏览器"这数据重要，别在清理时删掉"（iOS Safari/PWA 有效，容器内尽力而为）
+  try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist(); } catch(_) {}
+  await openDB();
+  const saved = await idbGet("data");
+  if (saved && saved.items) {
+    state = saved;
+    // 兼容：补齐字段
+    state.shops = state.shops || [];
+    state.shopNotes = state.shopNotes || {};
+    state.shopPhotos = state.shopPhotos || {};
+    state.items.forEach(it => { it.id = it.id || uid(); it.prices = it.prices || {}; it.photo = it.photo || ""; });
+    await migrate(state);
+  } else {
+    // 无内置初始数据：全新空库，商品/门店由用户录入或通过"导入"恢复
+    state = { shops: [], shopNotes: {}, shopPhotos: {}, items: [], history: [] };
+    await save();
+  }
+  renderChips();
+  render();
+  registerSW();
+  setupStickyHead();
+}
+
+/* 表头吸顶：容器高度 = 可视区底部 - 容器顶部 - 底部功能栏预留 */
+let stickyRaf = null;
+function setupStickyHead() {
+  const wrap = document.querySelector(".scroll-x");
+  const bar = document.querySelector(".fab-bar");
+  if (!wrap) return;
+
+  const apply = () => {
+    stickyRaf = null;
+    const vh = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const top = wrap.getBoundingClientRect().top + window.scrollY;
+    const barH = bar ? bar.getBoundingClientRect().height : 0;
+    // 预留：底部功能栏 + 安全区 + 一点余量
+    const reserved = barH + 24;
+    const h = Math.max(180, vh - top - reserved);
+    wrap.style.maxHeight = h + "px";
+    if (h > 200) wrap.classList.add("sticky-on");
+  };
+  const schedule = () => { if (stickyRaf) return; stickyRaf = requestAnimationFrame(apply); };
+
+  window.addEventListener("resize", schedule);
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", schedule);
+  }
+  window.addEventListener("orientationchange", () => setTimeout(schedule, 200));
+  apply();
+}
+
+async function save() {
+  state.v = DATA_VERSION;
+  await idbSet("data", state);
+}
+
+/* 数据版本迁移：老数据自动升级 */
+const DATA_VERSION = 8;
+const SUB_MAP5 = {
+  "肉禽蛋": "肉禽", "速冻面点": "速冻食品", "调味": "调味品",
+  "小米": "南北干货","薏米": "南北干货","黑豆": "南北干货","红豆": "南北干货",
+  "绿豆": "南北干货","白糖": "南北干货","冰糖": "南北干货","红糖片": "南北干货",
+  "雪糕": "乳品冷饮","鸡蛋": "蛋类","火腿肠": "熟食卤味",
+  "手撕馒头": "速冻食品","玉米馒头": "速冻食品","蒸煎饺": "速冻食品","蛋面": "速冻食品","海霸王": "速冻食品"
+};
+const SUB_MAP = {
+  "蔬菜": ["食品","蔬菜"], "肉禽": ["食品","肉禽蛋"], "粮油副食": ["食品","米面粮油"],
+  "调味": ["食品","调味"], "饮料": ["食品","饮料"],
+  "食品": null, "日用品": null
+};
+const NAME_SUB = {
+  "手撕馒头": "速冻面点", "玉米馒头": "速冻面点", "蒸煎饺": "速冻面点",
+  "蛋面": "速冻面点", "海霸王": "速冻面点",
+  "雪糕": "零食", "巧克力派": "零食", "瑞士卷": "零食", "火腿肠": "零食",
+  "卫生巾": "个护", "安全裤": "个护", "花露水": "个护", "牙膏": "个护",
+  "洗衣液": "家清", "纸巾": "纸品"
+};
+async function migrate(st) {
+  if ((st.v || 1) >= DATA_VERSION) return;
+  // v6: 新增价格历史账本，把现有价格导成第一条流水
+  if ((st.v || 1) < 6 && !Array.isArray(st.history)) {
+    st.history = [];
+    const d = new Date();
+    const ds = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    let cnt = 0;
+    st.items.forEach(it => {
+      for (const s in (it.prices || {})) {
+        const p = it.prices[s];
+        if (typeof p === "number" && p > 0) {
+          st.history.push({ itemId: it.id || "", shop: s, price: p, tag: "平", date: ds });
+          cnt++;
+        }
+      }
+    });
+    setTimeout(() => toast(`已开启价格历史，现有 ${cnt} 条价格已记入账本`), 600);
+  }
+  if ((st.v || 1) < 4) {
+    let m = 0;
+    st.items.forEach(it => {
+      if (!it.sub) {
+        if (it.cat === "食品" || it.cat === "蔬菜" || it.cat === "肉禽" || it.cat === "粮油副食" || it.cat === "调味" || it.cat === "饮料") {
+          let sub = null;
+          // 按_NAME_SUB 名称匹配
+          for (const k in NAME_SUB) { if (it.name.indexOf(k) >= 0 || (it.brand || "").indexOf(k) >= 0) { sub = NAME_SUB[k]; break; } }
+          if (!sub) {
+            if (it.cat === "蔬菜") sub = "蔬菜";
+            else if (it.cat === "肉禽") sub = "肉禽蛋";
+            else if (it.cat === "粮油副食") sub = "米面粮油";
+            else if (it.cat === "调味") sub = "调味";
+            else if (it.cat === "饮料") sub = "饮料";
+            else sub = "其他";
+          }
+          it.cat = "食品"; it.sub = sub; m++;
+        } else if (it.cat === "日用品") {
+          let sub = null;
+          for (const k in NAME_SUB) { if (it.name.indexOf(k) >= 0) { sub = NAME_SUB[k]; break; } }
+          it.sub = sub || "个护"; m++;
+        }
+      }
+    });
+  }
+  if ((st.v || 1) < 5) {
+    st.items.forEach(it => {
+      let ns = null;
+      for (const k in SUB_MAP5) { if (it.name.indexOf(k) >= 0) { ns = SUB_MAP5[k]; break; } }
+      if (!ns) ns = SUB_MAP5[it.sub];
+      if (ns && it.cat === "食品") it.sub = ns;
+    });
+  }
+  // v7: 规格写法统一（g→克、kg→千克、垃圾值清理）
+  if ((st.v || 1) < 7) {
+    let fixed = 0;
+    st.items.forEach(it => {
+      let s = (it.spec || "").trim();
+      if (!s) return;
+      const before = s;
+      if (s === "（未注明）") s = "";
+      else if (s === "（散装/未注明）") s = "散装";
+      s = s.replace(/(\d+(?:\.\d+)?)\s*kg\b/gi, "$1千克").replace(/(\d+(?:\.\d+)?)\s*g\b/gi, "$1克");
+      if (s !== before) { it.spec = s; fixed++; }
+    });
+    setTimeout(() => { if (fixed) toast(`规格写法已统一（${fixed} 项）`); }, 700);
+  }
+  // v8: ml → 毫升
+  if ((st.v || 1) < 8) {
+    let fixed8 = 0;
+    st.items.forEach(it => {
+      const s = (it.spec || "").trim();
+      const ns = s.replace(/(\d+(?:\.\d+)?)\s*ml\b/gi, "$1毫升").replace(/(\d+(?:\.\d+)?)\s*L\b/g, "$1升");
+      if (ns !== s) { it.spec = ns; fixed8++; }
+    });
+    setTimeout(() => { if (fixed8) toast(`毫升写法已统一（${fixed8} 项）`); }, 800);
+  }
+  // v2: "调味/盐" 并入 "调味"
+  let n = 0;
+  st.items.forEach(it => {
+    if (it.cat === "调味/盐") { it.cat = "调味"; n++; }
+  });
+  // v3: 合并两条沙茶酱（皇牌200克 与 潮汕姐未注明规格 为同一款）
+  const shaA = st.items.findIndex(i => i.name === "沙茶酱" && i.spec === "200克");
+  const shaB = st.items.findIndex(i => i.name === "沙茶酱" && i.spec === "（规格未注明）");
+  let merged = false;
+  if (shaA >= 0 && shaB >= 0) {
+    const A = st.items[shaA], B = st.items[shaB];
+    Object.assign(A.prices, B.prices);
+    if (!A.brand && B.brand) A.brand = B.brand;
+    st.items.splice(shaB, 1);
+    merged = true;
+  }
+  st.v = DATA_VERSION;
+  await idbSet("data", st);
+  const msgs = [];
+  if (n) msgs.push(`${n} 项归入「调味」`);
+  if (merged) msgs.push("两条沙茶酱已合并");
+  if (msgs.length) setTimeout(() => toast("数据已升级：" + msgs.join("；")), 600);
+}
+
+/* ============ 渲染 ============ */
+function allCats() {
+  const s = new Set();
+  state.items.forEach(i => { if (i.cat) s.add(i.cat); });
+  return [...s];
+}
+
+function renderChips() {
+  const majors = ["全部", ...MAJORS, ...state.items
+    .map(i => i.cat).filter(c => c && !MAJORS.includes(c) && c !== "全部")
+    .filter((c, i, a) => a.indexOf(c) === i)];
+  $("chips").innerHTML = majors.map(c =>
+    `<div class="chip ${c === filterMajor ? "on" : ""}" onclick="setMajor('${esc(c)}')">${esc(c)}</div>`
+  ).join("");
+  // 第二行：小类
+  let subs = [];
+  if (filterMajor === "全部") {
+    subs = [...new Set(state.items.map(i => i.sub).filter(Boolean))];
+  } else {
+    subs = SUBS[filterMajor] || [...new Set(state.items.filter(i => i.cat === filterMajor).map(i => i.sub).filter(Boolean))];
+  }
+  const chipBox = $("subchips");
+  chipBox.style.display = subs.length ? "flex" : "none";
+  chipBox.innerHTML = ["全部", ...subs].map(c =>
+    `<div class="chip ${c === filterSub ? "on" : ""}" onclick="setSub('${esc(c)}')">${esc(c)}</div>`
+  ).join("");
+}
+
+function setMajor(m) { filterMajor = m; filterSub = "全部"; renderChips(); render(); }
+function setSub(sb) { filterSub = sb; renderChips(); render(); }
+
+function clearSearch() { $("q").value = ""; render(); }
+
+function filtered() {
+  const q = ($("q").value || "").trim().toLowerCase();
+  $("clearX").style.display = q ? "block" : "none";
+  return state.items.filter(it => {
+    if (filterMajor !== "全部" && it.cat !== filterMajor) return false;
+    if (filterSub !== "全部" && (it.sub || "其他") !== filterSub) return false;
+    if (!q) return true;
+    const hay = [it.cat, it.brand, it.name, it.spec, it.note].join(" ").toLowerCase();
+    return hay.indexOf(q) >= 0;
+  });
+}
+
+function bestOf(it) {
+  let low = Infinity, shops = [];
+  for (const s of state.shops) {
+    const p = it.prices[s];
+    if (typeof p === "number" && p > 0) {
+      if (p < low) { low = p; shops = [s]; }
+      else if (p === low) shops.push(s);
+    }
+  }
+  return low === Infinity ? null : { low, shops };
+}
+
+function render() {
+  const shops = state.shops;
+  const list = filtered();
+  const q = ($("q").value || "").trim();
+  $("clearX").style.display = q ? "block" : "none";
+
+  // 统计
+  let known = 0, total = 0;
+  state.items.forEach(it => {
+    for (const s of shops) if (typeof it.prices[s] === "number" && it.prices[s] > 0) known++;
+  });
+  total = state.items.length * shops.length;
+  $("stat").textContent = `${state.items.length}项·${shops.length}店·${known}价`;
+
+  // 表头：图片 | 最低价 | 各店
+  $("thead").innerHTML =
+    `<tr><th class="fix-l" style="text-align:left;padding-left:12px">商品</th>` +
+    `<th style="min-width:46px">图</th><th style="min-width:62px">最低价</th>` +
+    shops.map(s => `<th>${esc(s)}</th>`).join("") +
+    `</tr>`;
+
+  if (!list.length) {
+    $("tbody").innerHTML = `<tr><td colspan="${shops.length + 3}">
+      <div class="empty"><div class="big">🔍</div>没有找到商品<br><br>
+      <button class="btn" style="background:#305496;display:inline-flex" onclick="openItem()">＋ 新增一个</button></div>
+    </td></tr>`;
+    return;
+  }
+
+  // 按大类/小类聚合（组内保持原顺序），避免同组被隔断
+  const ordered = [];
+  list.forEach(it => {
+    const k = (it.cat || "") + "/" + (it.sub || "");
+    const g = ordered.find(g => g.key === k);
+    if (g) g.items.push(it);
+    else ordered.push({ key: k, cat: it.cat, sub: it.sub, items: [it] });
+  });
+  ordered.sort((a, b) => list.indexOf(a.items[0]) - list.indexOf(b.items[0]));
+
+  let html = "";
+  ordered.forEach(g => {
+    html += `<tr class="cat-h"><td colspan="${shops.length + 3}">${esc([g.cat, g.sub].filter(Boolean).join(" · ") || "未分类")}</td></tr>`;
+    g.items.forEach(it => {
+    const best = bestOf(it);
+    const idx = state.items.indexOf(it);
+    html += `<tr>`;
+
+    // 1. 商品（吸左）
+    const subParts = [it.brand, it.spec, it.note].filter(Boolean);
+    const subHtml = subParts.length
+      ? subParts.map(p => p === "特价" ? '<span style="color:#e8590c;font-weight:600">特价</span>' : esc(p)).join(" · ")
+      : "—";
+    html += `<td class="fix-l" onclick="openItem(${idx})">
+      <span class="item-name">${esc(it.name || "（未命名）")}</span>
+      <span class="item-sub">${subHtml}</span>
+    </td>`;
+
+    // 2. 图片
+    html += `<td style="padding:8px 4px">${it.photo
+      ? `<img class="thumb" src="${it.photo}" onclick="viewPhoto(${idx})">`
+      : `<div class="thumb-empty" onclick="openItem(${idx})">📷</div>`}</td>`;
+
+    // 3. 最低价
+    html += `<td class="price-cell" onclick="openPrices(${idx})" style="min-width:62px">
+      ${best ? `<b style="color:#C00000;font-size:14.5px">${best.low.toFixed(2)}</b><br><span style="font-size:10px;color:#9ca3af">${esc(best.shops.join("、"))}</span>` : `<span class="price-empty">·</span>`}
+    </td>`;
+
+    // 4. 各店价格
+    shops.forEach(s => {
+      const p = it.prices[s];
+      const has = typeof p === "number" && p > 0;
+      const isBest = has && best && p === best.low;
+      const rec = lastRecord(it, s);
+      const sp = has && rec && rec.tag === "特价" ? '<i class="sp-tag">特</i>' : "";
+      html += `<td class="price-cell ${isBest ? "price-best" : ""}" onclick="openPrices(${idx})">
+        ${has ? `<span class="price-val">${p.toFixed(2)}${sp}</span>` : `<span class="price-empty">·</span>`}
+      </td>`;
+    });
+
+    html += `</tr>`;
+    });
+  });
+  $("tbody").innerHTML = html;
+}
+
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, c =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+/* ============ 商品编辑 ============ */
+
+const EXTRA_SUBS = { "食品": "其他", "日用品": "其他" };  // 兜底选项
+
+function fillMajorSelect(selected) {
+  const majors = [...new Set([...MAJORS, ...state.items.map(i => i.cat).filter(Boolean)])];
+  $("f_cat").innerHTML = majors.map(m =>
+    `<option value="${esc(m)}" ${m === selected ? "selected" : ""}>${esc(m)}</option>`).join("");
+}
+function fillSubSelect(major, selected) {
+  let subs = (SUBS[major] || []).slice();
+  // 当前商品的小类若是自定义的，也加进选项
+  state.items.forEach(i => {
+    if (i.cat === major && i.sub && !subs.includes(i.sub)) subs.push(i.sub);
+  });
+  if (EXTRA_SUBS[major]) subs.push(EXTRA_SUBS[major]);
+  if (!subs.length) subs = ["其他"];
+  if (selected && !subs.includes(selected)) subs.unshift(selected);
+  $("f_sub").innerHTML = subs.map(c =>
+    `<option value="${esc(c)}" ${c === selected ? "selected" : ""}>${esc(c)}</option>`).join("");
+}
+function onMajorChange() { fillSubSelect($("f_cat").value, ""); }
+
+/* 规格候选分两行：第一行重量（克，由小到大）/ 第二行容量（升，由小到大） */
+const SPEC_WEIGHT = ["100克","200克","250克（半斤）","500克（1斤）","1千克（2斤）"];
+const SPEC_VOLUME = ["200毫升","500毫升","1升","1.5升","2升"];
+const COMMON_SPECS = SPEC_WEIGHT.concat(SPEC_VOLUME);
+const COMMON_NOTES = ["一包","一袋","一瓶","一支","一盒","一听","一罐","一桶","散装"];
+function specSuggestions() {
+  return COMMON_SPECS;
+}
+function showSpecSugg() {
+  const box = $("specSugg");
+  const cur = ($("f_spec").value || "").trim();
+  const row = (title, list) =>
+    `<div class="spec-row"><span class="spec-col-title">${title}</span>` +
+    list.map(v => `<span class="spec-chip${v === cur ? " on" : ""}" onmousedown="event.preventDefault()" onclick="pickSpec('${esc(v)}')">${esc(v)}</span>`).join("") +
+    `</div>`;
+  box.innerHTML = row("重量", SPEC_WEIGHT) + row("容量", SPEC_VOLUME);
+  box.classList.add("show");
+}
+function hideSpecSugg() {
+  const box = $("specSugg");
+  if (box) box.classList.remove("show");
+}
+function pickSpec(v) {
+  $("f_spec").value = v;
+  showSpecSugg();
+}
+
+function showNoteSugg() {
+  const box = $("noteSugg");
+  const cur = ($("f_note").value || "").trim();
+  box.innerHTML = COMMON_NOTES.map(v =>
+    `<span class="spec-chip${v === cur ? " on" : ""}" onmousedown="event.preventDefault()" onclick="pickNote('${esc(v)}')">${esc(v)}</span>`).join("");
+  box.classList.add("show");
+}
+function hideNoteSugg() {
+  const box = $("noteSugg");
+  if (box) box.classList.remove("show");
+}
+function pickNote(v) {
+  $("f_note").value = v;
+  showNoteSugg();
+}
+
+function openItem(idx) {
+  editingIdx = (typeof idx === "number") ? idx : -1;
+  tmpPhoto = "";
+  const it = editingIdx >= 0 ? state.items[editingIdx] : null;
+  $("itemTitle").innerHTML = (it ? "编辑商品" : "新增商品") + '<span onclick="closeMask(\'itemMask\')">×</span>';
+  fillMajorSelect(it ? it.cat : (filterMajor !== "全部" ? filterMajor : "食品"));
+  fillSubSelect($("f_cat").value, it ? (it.sub || "") : "");
+  $("f_brand").value = it ? it.brand : "";
+  $("f_name").value = it ? it.name : "";
+  $("f_spec").value = it ? it.spec : "";
+  $("f_note").value = it ? it.note : "";
+  tmpPhoto = it ? (it.photo || "") : "";
+  drawPhotoBox();
+  $("delBtn").style.display = it ? "block" : "none";
+  $("itemMask").classList.add("show");
+  /* 候选条常驻：弹层一打开就直接显示，不用先点输入框 */
+  showSpecSugg();
+  showNoteSugg();
+}
+
+function drawPhotoBox() {
+  $("photoBox").innerHTML = tmpPhoto
+    ? `<img class="photo-preview" src="${tmpPhoto}" onclick="viewTmp()">`
+    : `<div class="photo-placeholder" onclick="document.getElementById('f_photo').click()">
+         <span class="plus">＋</span><span>无图</span></div>`;
+}
+
+function viewTmp() {
+  $("viewerImg").src = tmpPhoto;
+  $("viewerCap").textContent = "点击任意处关闭";
+  $("viewer").classList.add("show");
+}
+
+function pickPhoto(inp) {
+  const f = inp.files && inp.files[0];
+  if (!f) return;
+  compressImage(f, 900, 0.72).then(dataUrl => {
+    tmpPhoto = dataUrl;
+    drawPhotoBox();
+  });
+  inp.value = "";
+}
+
+function compressImage(file, maxSide, quality) {
+  return new Promise((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let { width: w, height: h } = img;
+        const scale = Math.min(1, maxSide / Math.max(w, h));
+        w = Math.round(w * scale); h = Math.round(h * scale);
+        const cv = document.createElement("canvas");
+        cv.width = w; cv.height = h;
+        const cx = cv.getContext("2d");
+        cx.fillStyle = "#fff"; cx.fillRect(0, 0, w, h);
+        cx.drawImage(img, 0, 0, w, h);
+        resolve(cv.toDataURL("image/jpeg", quality));
+      };
+      img.onerror = () => resolve("");
+      img.src = reader.result;
+    };
+    reader.onerror = () => resolve("");
+    reader.readAsDataURL(file);
+  });
+}
+
+async function saveItem() {
+  const name = $("f_name").value.trim();
+  if (!name) { toast("请填写商品名"); return; }
+  const data = {
+    cat: $("f_cat").value,
+    sub: $("f_sub").value,
+    brand: $("f_brand").value.trim(),
+    name,
+    spec: $("f_spec").value.trim(),
+    note: $("f_note").value.trim(),
+    photo: tmpPhoto
+  };
+  if (editingIdx >= 0) {
+    Object.assign(state.items[editingIdx], data);
+  } else {
+    state.items.push({ id: uid(), ...data, prices: {} });
+  }
+  await save();
+  closeMask("itemMask");
+  renderChips(); render();
+  toast(editingIdx >= 0 ? "已保存" : "已新增");
+}
+
+async function deleteItem() {
+  if (editingIdx < 0) return;
+  if (!confirm("确定删除「" + state.items[editingIdx].name + "」？")) return;
+  state.items.splice(editingIdx, 1);
+  await save();
+  closeMask("itemMask");
+  renderChips(); render();
+  toast("已删除");
+}
+
+function closeMask(id) {
+  $(id).classList.remove("show");
+}
+
+/* ============ 价格编辑 ============ */
+function lastRecord(item, shop) {
+  const hs = (state.history || []).filter(h => h.itemId === item.id && h.shop === shop);
+  return hs.length ? hs[hs.length - 1] : null;
+}
+
+function openPrices(idx) {
+  editingPricesIdx = idx;
+  const it = state.items[idx];
+  $("priceTitle").innerHTML = "录入价格 · " + esc(it.name) + '<span onclick="closeMask(\'priceMask\')">×</span>';
+  $("peGrid").innerHTML = state.shops.map(s => {
+    const v = it.prices[s];
+    const rec = lastRecord(it, s);
+    const on = rec && rec.tag === "特价";
+    return `<div class="pe-item">
+      <label>${esc(s)}</label>
+      <div class="pe-line">
+        <input type="number" step="0.01" inputmode="decimal" data-shop="${esc(s)}"
+          value="${typeof v === "number" ? v : ""}" placeholder="未记录">
+        <span class="tag-toggle ${on ? "on" : ""}" onclick="toggleTag(this)">特价</span>
+      </div>
+    </div>`;
+  }).join("");
+  $("priceMask").classList.add("show");
+}
+
+function toggleTag(el) { el.classList.toggle("on"); }
+
+async function savePrices() {
+  const it = state.items[editingPricesIdx];
+  it.prices = it.prices || {};
+  state.history = state.history || [];
+  const d = new Date();
+  const dstr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+  let recorded = 0;
+  $("peGrid").querySelectorAll(".pe-item").forEach(box => {
+    const inp = box.querySelector("input");
+    const tagEl = box.querySelector(".tag-toggle");
+    const shop = inp.getAttribute("data-shop");
+    const v = parseFloat(inp.value);
+    const tag = tagEl && tagEl.classList.contains("on") ? "特价" : "平";
+    if (!isNaN(v) && v > 0) {
+      const np = Math.round(v * 100) / 100;
+      const last = lastRecord(it, shop);
+      if (!last || last.price !== np || (last.tag || "平") !== tag) {
+        state.history.push({ itemId: it.id, shop, price: np, tag, date: dstr });
+        recorded++;
+      }
+      it.prices[shop] = np;
+    } else {
+      delete it.prices[shop];
+    }
+  });
+  await save();
+  closeMask("priceMask");
+  render();
+  toast(recorded ? `价格已更新，${recorded} 条记入历史` : "价格已更新");
+}
+
+function openHistory() {
+  if (editingPricesIdx < 0) return;
+  const it = state.items[editingPricesIdx];
+  $("histTitle").innerHTML = "价格历史 · " + esc(it.name) + '<span onclick="closeMask(\'histMask\')">×</span>';
+  const hs = (state.history || []).filter(h => h.itemId === it.id).slice().reverse();
+  let html = "";
+  state.shops.forEach(s => {
+    const list = hs.filter(h => h.shop === s);
+    if (!list.length) return;
+    html += `<div class="hist-shop">🏪 ${esc(s)}</div>`;
+    html += list.map(h => `<div class="hist-row">
+      <span class="hist-date">${esc(h.date)}</span>
+      ${h.tag === "特价" ? '<span class="tag-badge">特价</span>' : ""}
+      <b class="${h.tag === "特价" ? "hp" : "hp2"}">¥${h.price.toFixed(2)}</b>
+    </div>`).join("");
+  });
+  $("histBody").innerHTML = html || `<div class="empty">还没有价格记录</div>`;
+  $("histMask").classList.add("show");
+}
+
+/* ============ 门店 ============ */
+function openShops() {
+  renamingIdx = -1;
+  drawShops();
+  $("shopMask").classList.add("show");
+}
+
+let renamingIdx = -1;   // 正在改名的门店下标
+let notingIdx = -1;     // 正在编辑备注的门店下标
+
+function shopNote(s) { return (state.shopNotes || {})[s] || ""; }
+function shopPhoto(s) { return (state.shopPhotos || {})[s] || ""; }
+let photoIdx = -1;   // 正在传照片的门店下标
+
+function drawShops() {
+  $("shopList").innerHTML = state.shops.map((s, i) => {
+    if (i === renamingIdx) {
+      return `<div class="shop-row">
+        <input class="shop-name-inp" id="renameInput" value="${esc(s)}"
+          onkeydown="if(event.key==='Enter'){confirmRename(${i})}else if(event.key==='Escape'){cancelRename()}">
+        <span class="ok-btn" onclick="confirmRename(${i})">确定</span>
+        <span class="cancel-btn" onclick="cancelRename()">取消</span>
+      </div>`;
+    }
+    if (i === notingIdx) {
+      return `<div class="shop-row">
+        <input class="shop-name-inp" id="noteInput" value="${esc(shopNote(s))}" placeholder="位置 / 摊位号 / 营业时间…"
+          onkeydown="if(event.key==='Enter'){confirmNote(${i})}else if(event.key==='Escape'){cancelNote()}">
+        <span class="ok-btn" onclick="confirmNote(${i})">确定</span>
+        <span class="cancel-btn" onclick="cancelNote()">取消</span>
+      </div>`;
+    }
+    const note = shopNote(s);
+    const ph = shopPhoto(s);
+    return `<div class="shop-row">
+      <div class="shop-move">
+        <span class="${i === 0 ? "off" : ""}" onclick="moveShop(${i},-1)">▲</span>
+        <span class="${i === state.shops.length - 1 ? "off" : ""}" onclick="moveShop(${i},1)">▼</span>
+      </div>
+      ${ph
+        ? `<img class="shop-thumb" src="${ph}" onclick="viewShopPhoto(${i})">`
+        : `<div class="shop-thumb-empty" onclick="startShopPhoto(${i})">📷</div>`}
+      <div style="flex:1;min-width:0">
+        <span class="nm">${esc(s)}</span>
+        ${note ? `<span class="shop-note">${esc(note)}</span>` : ""}
+      </div>
+      <span class="edit" onclick="startRename(${i})">改名</span>
+      <span class="edit" onclick="startNote(${i})">备注</span>
+      <span class="edit" onclick="startShopPhoto(${i})">${ph ? "换图" : "照片"}</span>
+      <span class="del" onclick="delShop(${i})">删除</span>
+    </div>`;
+  }).join("") || `<div class="empty" style="padding:20px">还没有门店</div>`;
+
+  const focusEl = document.getElementById(renamingIdx >= 0 ? "renameInput" : "noteInput");
+  if (focusEl) { focusEl.focus(); focusEl.setSelectionRange(focusEl.value.length, focusEl.value.length); }
+}
+
+async function moveShop(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= state.shops.length) return;
+  const tmp = state.shops[i];
+  state.shops[i] = state.shops[j];
+  state.shops[j] = tmp;
+  await save();
+  drawShops();
+  render();
+}
+
+function startRename(i) { notingIdx = -1; renamingIdx = i; drawShops(); }function cancelRename() { renamingIdx = -1; drawShops(); }
+
+function startNote(i) { renamingIdx = -1; notingIdx = i; drawShops(); }
+function cancelNote() { notingIdx = -1; drawShops(); }
+
+function startShopPhoto(i) {
+  photoIdx = i;
+  const inp = document.getElementById("shopPhotoFile");
+  inp.value = "";
+  inp.click();
+}
+
+function pickShopPhoto(inp) {
+  const f = inp.files && inp.files[0];
+  if (!f || photoIdx < 0) return;
+  compressImage(f, 800, 0.7).then(async dataUrl => {
+    if (!dataUrl) { toast("照片读取失败"); return; }
+    const s = state.shops[photoIdx];
+    state.shopPhotos = state.shopPhotos || {};
+    state.shopPhotos[s] = dataUrl;
+    await save();
+    photoIdx = -1;
+    drawShops();
+    toast("门店照片已保存");
+  });
+  inp.value = "";
+}
+
+function viewShopPhoto(i) {
+  const s = state.shops[i];
+  $("viewerImg").src = shopPhoto(s);
+  $("viewerCap").textContent = s + (shopNote(s) ? " · " + shopNote(s) : "");
+  $("viewer").classList.add("show");
+}
+
+async function confirmNote(i) {
+  const inp = document.getElementById("noteInput");
+  const val = inp ? inp.value.trim() : "";
+  const s = state.shops[i];
+  state.shopNotes = state.shopNotes || {};
+  if (val) state.shopNotes[s] = val; else delete state.shopNotes[s];
+  await save();
+  notingIdx = -1;
+  drawShops();
+  toast("备注已保存");
+}
+
+function startRename(i) { renamingIdx = i; drawShops(); }
+function cancelRename() { renamingIdx = -1; drawShops(); }
+
+async function confirmRename(i) {
+  const inp = document.getElementById("renameInput");
+  const val = inp ? inp.value : "";
+  const ok = await renameShop(i, val);
+  if (ok) { renamingIdx = -1; drawShops(); }
+}
+
+/* 重命名门店：价格记录同步搬过去 */
+async function renameShop(i, newName) {
+  const oldName = state.shops[i];
+  const nn = (newName || "").trim();
+  if (!nn) { toast("名称不能为空"); return false; }
+  if (nn === oldName) return true;
+  if (state.shops.includes(nn)) { toast("已有同名门店"); return false; }
+  state.shops[i] = nn;
+  // 备注跟随改名
+  ["shopNotes", "shopPhotos"].forEach(k => {
+    const m = state[k];
+    if (m && Object.prototype.hasOwnProperty.call(m, oldName)) {
+      m[nn] = m[oldName];
+      delete m[oldName];
+    }
+  });
+  // 搬移所有价格
+  let moved = 0;
+  state.items.forEach(it => {
+    if (Object.prototype.hasOwnProperty.call(it.prices, oldName)) {
+      it.prices[nn] = it.prices[oldName];
+      delete it.prices[oldName];
+      moved++;
+    }
+  });
+  // 历史记录同步改名
+  if (state.history) state.history.forEach(h => { if (h.shop === oldName) h.shop = nn; });
+  await save();
+  renderChips(); render();
+  toast(moved ? `已改名，${moved} 条价格已同步` : "已改名");
+  return true;
+}
+
+async function addShop() {
+  const n = $("newShop").value.trim();
+  if (!n) return;
+  if (state.shops.includes(n)) { toast("门店已存在"); return; }
+  state.shops.push(n);
+  $("newShop").value = "";
+  await save();
+  drawShops(); renderChips(); render();
+  toast("已添加门店");
+}
+
+async function delShop(i) {
+  const s = state.shops[i];
+  const used = state.items.some(it => typeof it.prices[s] === "number");
+  if (used && !confirm(`「${s}」下已记录的价格会一起删除，确定？`)) return;
+  state.shops.splice(i, 1);
+  if (state.shopNotes) delete state.shopNotes[s];
+  if (state.shopPhotos) delete state.shopPhotos[s];
+  state.items.forEach(it => { delete it.prices[s]; });
+  if (state.history) state.history = state.history.filter(h => h.shop !== s);
+  await save();
+  drawShops(); renderChips(); render();
+  toast("已删除门店");
+}
+
+/* ============ 看最便宜 ============ */
+function openBest() {
+  const rows = [];
+  state.items.forEach(it => {
+    const b = bestOf(it);
+    if (!b) return;
+    let worst = 0, filled = 0;
+    state.shops.forEach(s => {
+      const p = it.prices[s];
+      if (typeof p === "number" && p > 0) { filled++; if (p > worst) worst = p; }
+    });
+    rows.push({ it, b, worst, filled });
+  });
+  rows.sort((a, b) => b.b.low - a.b.low);
+  // 按门店统计省钱
+  const shopStat = {};
+  rows.forEach(r => {
+    if (r.filled > 1) {
+      const save = r.worst - r.b.low;
+      r.b.shops.forEach(s => { shopStat[s] = (shopStat[s] || 0) + save; });
+    }
+  });
+  const statArr = Object.entries(shopStat).sort((a, b) => b[1] - a[1]);
+
+  let html = "";
+  if (statArr.length) {
+    html += `<div style="background:#fff5f5;border-radius:10px;padding:14px;margin-bottom:16px">
+      <div style="font-size:12px;color:#9ca3af;margin-bottom:8px">按「比最贵省下多少」累计</div>
+      ${statArr.map(([s, v]) => `<div style="display:flex;justify-content:space-between;padding:4px 0;font-size:14px">
+        <span>${esc(s)}</span><b style="color:#C00000">省 ¥${v.toFixed(2)}</b></div>`).join("")}
+    </div>`;
+  }
+  html += rows.map(r => {
+    const diff = r.filled > 1 ? (r.worst - r.b.low) : 0;
+    return `<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid #f1f5f9">
+      ${r.it.photo ? `<img src="${r.it.photo}" style="width:40px;height:40px;border-radius:6px;object-fit:cover">` : `<div style="width:40px;height:40px;border-radius:6px;background:#f3f6fb"></div>`}
+      <div style="flex:1;min-width:0">
+        <div style="font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(r.it.name)}</div>
+        <div style="font-size:11px;color:#9ca3af">${esc(r.b.shops.join("、"))}${diff > 0 ? ` · 比最贵省 ¥${diff.toFixed(2)}` : ""}</div>
+      </div>
+      <div style="color:#C00000;font-weight:700;font-size:15px">¥${r.b.low.toFixed(2)}</div>
+    </div>`;
+  }).join("") || `<div class="empty">还没有任何价格记录</div>`;
+
+  $("bestBody").innerHTML = html;
+  $("bestMask").classList.add("show");
+}
+
+/* ============ 图片查看 ============ */
+function viewPhoto(idx) {
+  const it = state.items[idx];
+  $("viewerImg").src = it.photo;
+  $("viewerCap").textContent = [it.brand, it.name, it.spec].filter(Boolean).join(" · ");
+  $("viewer").classList.add("show");
+}
+function closeViewer() { $("viewer").classList.remove("show"); }
+
+/* ============ 导出 ============ */
+function download(name, content, mime) {
+  const blob = content instanceof Blob ? content : new Blob([content], { type: mime || "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+}
+
+function today() {
+  const d = new Date();
+  return `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
+}
+function stamp() {
+  const d = new Date();
+  const p = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())}_${p(d.getHours())}${p(d.getMinutes())}`;
+}
+
+function csvCell(v) {
+  const s = String(v == null ? "" : v);
+  return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+
+/* ============ 长截图：把当前表格画成一张图 ============ */
+function exportImage() {
+  const shops = state.shops;
+  const W_NAME = 170, W_PHOTO = 50, W_BEST = 78, W_SHOP = 66, ROW_H = 46, HEAD_H = 40, TITLE_H = 56;
+  const list = filtered();
+  if (!list.length) { toast("没有可截图的内容"); return; }
+
+  const W = 16 + W_NAME + W_PHOTO + W_BEST + shops.length * W_SHOP + 16;
+  const H = TITLE_H + HEAD_H + list.length * ROW_H + 16;
+
+  const cv = document.createElement("canvas");
+  const scale = 2;  // 2倍清晰度
+  cv.width = W * scale; cv.height = H * scale;
+  const cx = cv.getContext("2d");
+  cx.scale(scale, scale);
+
+  // 背景
+  cx.fillStyle = "#f5f7fa"; cx.fillRect(0, 0, W, H);
+
+  // 标题条
+  cx.fillStyle = "#305496"; cx.fillRect(0, 0, W, TITLE_H);
+  cx.fillStyle = "#fff"; cx.font = "bold 17px sans-serif"; cx.textBaseline = "middle";
+  cx.fillText("🛒 买菜比价本", 16, TITLE_H / 2 - 8);
+  cx.font = "11px sans-serif"; cx.fillStyle = "rgba(255,255,255,.8)";
+  const d = new Date();
+  cx.fillText(d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0")
+    + " · " + state.items.length + " 项 · " + shops.length + " 店", 16, TITLE_H / 2 + 12);
+
+  // 表头
+  let y = TITLE_H;
+  const cols = [{x:16, w:W_NAME, t:"商品"}, {x:16+W_NAME, w:W_PHOTO, t:"图"},
+    {x:16+W_NAME+W_PHOTO, w:W_BEST, t:"最低价"}]
+    .concat(shops.map((s2, i) => ({x:16+W_NAME+W_PHOTO+W_BEST+i*W_SHOP, w:W_SHOP, t:s2})));
+  cx.fillStyle = "#305496"; cx.fillRect(16, y, W-32, HEAD_H);
+  cx.fillStyle = "#fff"; cx.font = "bold 12px sans-serif"; cx.textAlign = "center";
+  cols.forEach(c => {
+    let t = c.t;
+    if (c.t.length > 6 && c.w < 70) t = c.t.slice(0, 6);
+    cx.fillText(t, c.x + c.w/2, y + HEAD_H/2, c.w - 6);
+  });
+  y += HEAD_H;
+
+  // 预加载图片
+  const imgs = {};
+  let pending = 0;
+  const promises = list.filter(it => it.photo).map(it => new Promise(res => {
+    const im = new Image();
+    im.onload = () => { imgs[it.id || it.name] = im; res(); };
+    im.onerror = () => res();
+    im.src = it.photo;
+  }));
+
+  Promise.all(promises).then(() => {
+    cx.textAlign = "center";
+    list.forEach((it, ri) => {
+      // 行背景
+      cx.fillStyle = ri % 2 ? "#ffffff" : "#fafbfd";
+      cx.fillRect(16, y, W-32, ROW_H);
+      const best = bestOf(it);
+      const idx = state.items.indexOf(it);
+
+      // 商品名（左对齐）
+      cx.textAlign = "left";
+      cx.fillStyle = "#1f2937"; cx.font = "bold 12.5px sans-serif";
+      let nm = it.name || "（未命名）";
+      cx.fillText(nm.length > 11 ? nm.slice(0, 11) + "…" : nm, 24, y + (it.brand||it.spec ? 15 : ROW_H/2), W_NAME-14);
+      if (it.brand || it.spec) {
+        cx.fillStyle = "#9ca3af"; cx.font = "10px sans-serif";
+        cx.fillText((it.brand + " " + it.spec + " " + (it.note || "")).trim().slice(0, 15), 24, y + 31, W_NAME-14);
+      }
+      cx.textAlign = "center";
+
+      // 图片
+      const im = imgs[it.id || it.name];
+      const px = 16+W_NAME+8, py = y+7, ps = ROW_H-14;
+      if (im) {
+        const r = 4;
+        cx.save();
+        cx.beginPath();
+        cx.roundRect(px, py, ps, ps, r);
+        cx.clip();
+        const ratio = Math.max(ps/im.width, ps/im.height);
+        const dw = im.width*ratio, dh = im.height*ratio;
+        cx.drawImage(im, px+(ps-dw)/2, py+(ps-dh)/2, dw, dh);
+        cx.restore();
+      } else {
+        cx.strokeStyle = "#dbe3ee"; cx.strokeRect(px+.5, py+.5, ps, ps);
+        cx.fillStyle = "#c3cddf"; cx.font = "12px sans-serif";
+        cx.fillText("无图", px+ps/2, py+ps/2);
+      }
+
+      // 最低价
+      const bx = 16+W_NAME+W_PHOTO;
+      if (best) {
+        cx.fillStyle = "#C00000"; cx.font = "bold 13px sans-serif";
+        cx.fillText(best.low.toFixed(2), bx+W_BEST/2, y+17);
+        cx.fillStyle = "#9ca3af"; cx.font = "9px sans-serif";
+        cx.fillText(best.shops.join("、").slice(0,7), bx+W_BEST/2, y+33, W_BEST-4);
+      } else {
+        cx.fillStyle = "#d1d5db"; cx.fillText("·", bx+W_BEST/2, y+ROW_H/2);
+      }
+
+      // 各店
+      shops.forEach((s2, i) => {
+        const p2 = it.prices[s2];
+        const cx0 = 16+W_NAME+W_PHOTO+W_BEST+i*W_SHOP;
+        const has = typeof p2 === "number" && p2 > 0;
+        const rec = lastRecord(it, s2);
+        const sp = has && rec && rec.tag === "特价";
+        if (has && best && p2 === best.low) {
+          cx.fillStyle = "#FF4B4B";
+          cx.beginPath();
+          if (cx.roundRect) cx.roundRect(cx0+5, y+9, W_SHOP-10, ROW_H-18, 6);
+          else cx.rect(cx0+5, y+9, W_SHOP-10, ROW_H-18);
+          cx.fill();
+          cx.fillStyle = "#fff"; cx.font = "bold 12.5px sans-serif";
+        } else {
+          cx.fillStyle = has ? "#1f2937" : "#d1d5db";
+          cx.font = has ? "12.5px sans-serif" : "13px sans-serif";
+        }
+        cx.fillText(has ? p2.toFixed(2) : "·", cx0+W_SHOP/2, y+ROW_H/2);
+        if (sp) {
+          cx.fillStyle = "#e8590c"; cx.font = "bold 8px sans-serif";
+          cx.fillText("特", cx0+W_SHOP-8, y+11);
+        }
+      });
+
+      // 分隔线
+      cx.strokeStyle = "#eef1f6";
+      cx.beginPath(); cx.moveTo(16, y+ROW_H+.5); cx.lineTo(W-16, y+ROW_H+.5); cx.stroke();
+      y += ROW_H;
+    });
+
+    // 导出
+    cv.toBlob(blob => {
+      if (!blob) { toast("截图生成失败"); return; }
+      const fname = `买菜比价_${stamp()}.png`;
+      const file = new File([blob], fname, { type: "image/png" });
+      shareOrDownload(file, "长截图已生成，请选择存储位置", "长截图已生成");
+    }, "image/png");
+  });
+}
+
+function exportJSON() {
+  const payload = { app: "grocery-price-book", version: 1, exportedAt: new Date().toISOString(), data: state };
+  const json = JSON.stringify(payload);
+  const file = new File([json], `买菜比价备份_${stamp()}.json`, { type: "application/json" });
+  shareOrDownload(file, "备份已分享，请选择存储位置", "备份已导出（含图片）");
+}
+
+/* 手机 webview 不支持下载链接（会跳空白页），优先走系统分享面板 */
+function shareOrDownload(file, okShareMsg, okDownloadMsg) {
+  try {
+    if (navigator.share && navigator.canShare && navigator.canShare({ files: [file] })) {
+      navigator.share({ files: [file], title: file.name })
+        .then(() => toast(okShareMsg))
+        .catch(err => { if (err && err.name !== "AbortError") reallyDownload(file, okDownloadMsg); });
+      return;
+    }
+  } catch(_) {}
+  reallyDownload(file, okDownloadMsg);
+}
+function reallyDownload(file, msg) {
+  const url = URL.createObjectURL(file);
+  const a = document.createElement("a");
+  a.href = url; a.download = file.name;
+  document.body.appendChild(a); a.click();
+  setTimeout(() => { document.body.removeChild(a); URL.revokeObjectURL(url); }, 300);
+  toast(msg || "已导出");
+}
+
+function importJSON() { $("jsonFile").click(); }
+
+/* ============ 更多 / 清空数据 ============ */
+function openMore() {
+  const hc = $("histCount");
+  if (hc) hc.textContent = (state.history || []).length + " 条";
+  $("moreMask").classList.add("show");
+}
+
+async function doClear(scope) {
+  const nItems = state.items.length;
+  const nHist = (state.history || []).length;
+  let msg = "";
+  if (scope === "items") msg = `将删除 ${nItems} 项商品及其全部价格记录，门店保留。\n\n此操作不可撤销，确定吗？`;
+  else if (scope === "history") msg = `将删除 ${nHist} 条价格历史，商品和当前价格不受影响。\n\n此操作不可撤销，确定吗？`;
+  else msg = `将删除全部数据：${nItems} 项商品、${state.shops.length} 家门店、${nHist} 条价格历史。\n\n此操作不可撤销，建议先点「备份」导出一份。确定清空吗？`;
+
+  if (!confirm(msg)) return;
+  // 危险操作二次确认
+  if (scope === "all" && !confirm("再次确认：真的要清空全部数据吗？")) return;
+
+  if (scope === "items") {
+    state.items = [];
+  } else if (scope === "history") {
+    state.history = [];
+  } else {
+    state.items = [];
+    state.shops = [];
+    state.shopNotes = {};
+    state.shopPhotos = {};
+    state.history = [];
+  }
+  await save();
+  closeMask("moreMask");
+  filterMajor = "全部"; filterSub = "全部";
+  if (typeof filterSub !== "undefined") filterSub = "全部";
+  renderChips();
+  render();
+  toast(scope === "history" ? "价格历史已清空" : "数据已清空");
+}
+
+function doImport(inp) {
+  const f = inp.files && inp.files[0];
+  if (!f) return;
+  const r = new FileReader();
+  r.onload = async () => {
+    let obj = null;
+    try {
+      let text = String(r.result || "");
+      // 去掉 BOM 和首尾空白（部分文件管理器会加 BOM）
+      if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1);
+      text = text.trim();
+      if (!text) throw new Error("EMPTY");
+      obj = JSON.parse(text);
+    } catch (e) {
+      toast(e.message === "EMPTY" ? "导入失败：文件是空的" : "导入失败：不是有效的 JSON 文件");
+      inp.value = "";
+      return;
+    }
+
+    // 兼容多种结构：{data:{...}} / {...} / [{...}]
+    let data = obj && obj.data ? obj.data : obj;
+    if (Array.isArray(data)) data = { items: data, shops: [] };
+    if (!data || !Array.isArray(data.items)) {
+      const keys = data && typeof data === "object" ? Object.keys(data).slice(0,5).join("、") : typeof data;
+      toast(`导入失败：文件结构不对（读到的是 ${f.name}，字段：${keys}）`);
+      inp.value = "";
+      return;
+    }
+    if (data.items.length === 0) {
+      toast("导入失败：文件里没有商品数据");
+      inp.value = "";
+      return;
+    }
+
+    if (!confirm(`将导入 ${data.items.length} 项商品、${(data.shops || []).length} 家门店，覆盖当前数据？`)) { inp.value = ""; return; }
+    state = data;
+    state.shops = state.shops || [];
+    state.shopNotes = state.shopNotes || {};
+    state.shopPhotos = state.shopPhotos || {};
+    state.history = state.history || [];
+    state.items.forEach(it => { it.id = it.id || uid(); it.prices = it.prices || {}; it.photo = it.photo || ""; });
+    await save();
+    filterMajor = "全部"; filterSub = "全部";
+    filterSub = "全部";
+    renderChips(); render();
+    toast(`导入成功：${data.items.length} 项商品`);
+    inp.value = "";
+  };
+  r.onerror = () => { toast("导入失败：读取文件出错"); inp.value = ""; };
+  r.readAsText(f, "utf-8");
+}
+
+/* ============ toast ============ */
+let toastTimer = null;
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove("show"), 2200);
+}
+
+/* ============ SW ============ */
+function registerSW() {
+  if ("serviceWorker" in navigator && location.protocol === "https:" || location.hostname === "localhost") {
+    navigator.serviceWorker.register("sw.js").catch(() => {});
+  }
+}
+
+/* 键盘适配：交给系统默认行为。
+   iOS/Safari 聚焦输入框时会自己把页面推上来，任何额外的滚动或布局改写都会和它打架，
+   导致光标错位、候选区被挤出视口。这里刻意不做任何处理。 */
+
+/* 防止双击缩放 */
+document.addEventListener("dblclick", e => e.preventDefault(), { passive: false });
+
+/* 版本徽章：点一下看构建时间，方便确认是不是最新版 */
+  const vb = document.getElementById("ver");
+  if (vb) {
+    vb.textContent = APP_VER;
+    vb.onclick = () => toast(`版本 ${APP_VER} · 构建于 ${APP_BUILD}`);
+  }
+
+boot();
+
+</script>
+</body>
+</html>
