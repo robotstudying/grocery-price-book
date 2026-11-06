@@ -472,8 +472,8 @@ input,select,textarea{font-size:16px !important;}
 </script>
 <script>
 /* 版本号：日期 + 当日小版本，每次改动递增后一位（v1105.1 → v1105.2 → …） */
-const APP_VER = "v1106.35";
-const APP_BUILD = "2026-11-06 11:35";
+const APP_VER = "v1106.36";
+const APP_BUILD = "2026-11-06 11:58";
 
 /* ============ 存储层：IndexedDB ============ */
 const DB_NAME = "grocery_db";
@@ -1662,34 +1662,7 @@ document.addEventListener("dblclick", e => e.preventDefault(), { passive: false 
   const vb = document.getElementById("ver");
   if (vb) {
     vb.textContent = APP_VER;
-    vb.onclick = () => {
-      const old = document.getElementById("diagPanel");
-      if (old) { old.remove(); return; }
-      const vv = window.visualViewport;
-      const bar = document.querySelector(".fab-bar");
-      const barRect = bar ? bar.getBoundingClientRect() : null;
-      const rows = [
-        ["版本", APP_VER],
-        ["screen.height", screen.height],
-        ["innerHeight", window.innerHeight],
-        ["vv.height", vv ? vv.height.toFixed(1) : "无"],
-        ["vv.offsetTop", vv ? vv.offsetTop.toFixed(1) : "-"],
-        ["vv底", vv ? (vv.offsetTop + vv.height).toFixed(1) : "-"],
-        ["bar.top", barRect ? barRect.top.toFixed(1) : "-"],
-        ["bar.bottom(实际)", barRect ? barRect.bottom.toFixed(1) : "-"],
-        ["bar.height", barRect ? barRect.height.toFixed(1) : "-"],
-        ["bar.style.bottom", bar ? (bar.style.bottom || "(未设)") : "-"],
-        ["safe-bottom", getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom").trim() || "0"],
-        ["body高", document.body.getBoundingClientRect().height.toFixed(1)]
-      ];
-      const panel = document.createElement("div");
-      panel.id = "diagPanel";
-      panel.style.cssText = "position:fixed;inset:0;z-index:9999;background:rgba(15,23,42,.92);color:#fff;padding:60px 20px;overflow:auto;font:13px/1.9 ui-monospace,Menlo,monospace;";
-      panel.innerHTML = "<div style='font-size:16px;font-weight:700;margin-bottom:12px'>布局诊断（点任意处关闭）</div>" +
-        rows.map(([k, v]) => `<div style="display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.2);padding:6px 0"><span style="opacity:.7">${k}</span><b>${v}</b></div>`).join("");
-      panel.onclick = () => panel.remove();
-      document.body.appendChild(panel);
-    };
+    vb.onclick = () => toast(`版本 ${APP_VER} · 构建于 ${APP_BUILD}`);
   }
 
 boot();
