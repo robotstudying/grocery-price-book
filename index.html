@@ -472,8 +472,8 @@ input,select,textarea{font-size:16px !important;}
 </script>
 <script>
 /* 版本号：日期 + 当日小版本，每次改动递增后一位（v1105.1 → v1105.2 → …） */
-const APP_VER = "v1106.32";
-const APP_BUILD = "2026-11-06 11:15";
+const APP_VER = "v1106.33";
+const APP_BUILD = "2026-11-06 11:25";
 
 /* ============ 存储层：IndexedDB ============ */
 const DB_NAME = "grocery_db";
@@ -1686,7 +1686,23 @@ document.addEventListener("dblclick", e => e.preventDefault(), { passive: false 
   const vb = document.getElementById("ver");
   if (vb) {
     vb.textContent = APP_VER;
-    vb.onclick = () => toast(`版本 ${APP_VER} · 构建于 ${APP_BUILD}`);
+    vb.onclick = () => {
+      const vv = window.visualViewport;
+      const bar = document.querySelector(".fab-bar");
+      const barRect = bar ? bar.getBoundingClientRect() : null;
+      const info = [
+        `版本 ${APP_VER}`,
+        `innerH=${window.innerHeight}`,
+        `vv=${vv ? vv.height.toFixed(0) : "无"}`,
+        `vvTop=${vv ? vv.offsetTop.toFixed(0) : "-"}`,
+        `screen=${screen.height}`,
+        `bar底=${barRect ? barRect.bottom.toFixed(0) : "-"}`,
+        `barCSS=${bar ? bar.style.bottom || "(未设)" : "-"}`,
+        `safeB=${getComputedStyle(document.documentElement).getPropertyValue("--safe-bottom") || "0"}`
+      ].join(" | ");
+      toast(info);
+      console.log(info);
+    };
   }
 
 boot();
