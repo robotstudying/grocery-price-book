@@ -1,4 +1,6 @@
-# 买菜比价本 🛒
+<p align="center"><img src="assets/icon-1024.png" width="128" alt="猴价钱图标"></p>
+
+# 猴价钱 🐵
 
 一个**单文件 HTML** 的买菜比价小工具，无需安装任何依赖，浏览器打开即用。支持添加到 iPhone / Android 主屏幕，作为 PWA 使用。
 
