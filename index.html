@@ -230,16 +230,21 @@ input,select,textarea{font-size:16px !important;}
 
 /* 门店管理列表 */
 .shop-row{
-  display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);
+  display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid var(--line);
 }
-.shop-row .nm{flex:1;font-size:15px;}
-.shop-row .del{color:#dc2626;font-size:13px;padding:6px 10px;border-radius:7px;background:#fef2f2;cursor:pointer;}
-.shop-row .edit{color:var(--brand);font-size:13px;padding:6px 10px;border-radius:7px;background:#eef2f8;cursor:pointer;}
-.shop-move{display:flex;flex-direction:column;flex:0 0 auto;gap:2px;}
+.shop-main{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;}
+.shop-line{display:flex;align-items:center;gap:8px;}
+.shop-row .nm{flex:1;min-width:0;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.acts{display:flex;gap:4px;flex:0 0 auto;}
+.act{width:28px;height:28px;display:flex;align-items:center;justify-content:center;border-radius:7px;background:#eef2f8;color:var(--brand);cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.act svg{width:15px;height:15px;display:block;}
+.act:active{opacity:.55;}
+.act.danger{background:#fef2f2;color:#dc2626;}
+.shop-move{display:flex;flex-direction:column;flex:0 0 auto;gap:2px;align-self:center;}
 .shop-move span{width:22px;height:18px;display:flex;align-items:center;justify-content:center;font-size:10px;line-height:1;border-radius:5px;background:#f1f5f9;color:#64748b;cursor:pointer;user-select:none;}
 .shop-move span:active{background:var(--brand);color:#fff;}
 .shop-move span.off{opacity:.25;pointer-events:none;}
-.shop-row .shop-note{display:block;font-size:11px;color:#9ca3af;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.shop-row .shop-note{font-size:11.5px;color:#8b96a8;line-height:1.4;white-space:normal;word-break:break-word;display:flex;gap:4px;}
 .shop-thumb{width:44px;height:44px;border-radius:8px;object-fit:cover;border:1px solid var(--line);cursor:pointer;flex:0 0 auto;}
 .shop-thumb-empty{width:44px;height:44px;border-radius:8px;border:1px dashed #c7d2e0;background:#fafcff;display:flex;align-items:center;justify-content:center;color:#9aa8bd;font-size:17px;cursor:pointer;flex:0 0 auto;}
 .shop-row input::placeholder{color:#c0c8d4;}
@@ -472,8 +477,8 @@ input,select,textarea{font-size:16px !important;}
 </script>
 <script>
 /* 版本号：日期 + 当日小版本，每次改动递增后一位（v1105.1 → v1105.2 → …） */
-const APP_VER = "v1106.37";
-const APP_BUILD = "2026-11-06 16:51";
+const APP_VER = "v1106.38";
+const APP_BUILD = "2026-11-06 18:41";
 
 /* ============ 存储层：IndexedDB ============ */
 const DB_NAME = "grocery_db";
@@ -1118,6 +1123,12 @@ function shopNote(s) { return (state.shopNotes || {})[s] || ""; }
 function shopPhoto(s) { return (state.shopPhotos || {})[s] || ""; }
 let photoIdx = -1;   // 正在传照片的门店下标
 
+/* 门店操作图标（内联 SVG，随文字颜色变化） */
+const ICON_EDIT  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const ICON_NOTE  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h5"/></svg>';
+const ICON_PHOTO = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>';
+const ICON_TRASH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>';
+
 function drawShops() {
   $("shopList").innerHTML = state.shops.map((s, i) => {
     if (i === renamingIdx) {
@@ -1146,14 +1157,18 @@ function drawShops() {
       ${ph
         ? `<img class="shop-thumb" src="${ph}" onclick="viewShopPhoto(${i})">`
         : `<div class="shop-thumb-empty" onclick="startShopPhoto(${i})">📷</div>`}
-      <div style="flex:1;min-width:0">
-        <span class="nm">${esc(s)}</span>
-        ${note ? `<span class="shop-note">${esc(note)}</span>` : ""}
+      <div class="shop-main">
+        <div class="shop-line">
+          <span class="nm">${esc(s)}</span>
+          <span class="acts">
+            <span class="act" title="改名" onclick="startRename(${i})">${ICON_EDIT}</span>
+            <span class="act" title="备注" onclick="startNote(${i})">${ICON_NOTE}</span>
+            <span class="act" title="${ph ? "换照片" : "添加照片"}" onclick="startShopPhoto(${i})">${ICON_PHOTO}</span>
+            <span class="act danger" title="删除" onclick="delShop(${i})">${ICON_TRASH}</span>
+          </span>
+        </div>
+        ${note ? `<div class="shop-note"><span>📍</span><span>${esc(note)}</span></div>` : ""}
       </div>
-      <span class="edit" onclick="startRename(${i})">改名</span>
-      <span class="edit" onclick="startNote(${i})">备注</span>
-      <span class="edit" onclick="startShopPhoto(${i})">${ph ? "换图" : "照片"}</span>
-      <span class="del" onclick="delShop(${i})">删除</span>
     </div>`;
   }).join("") || `<div class="empty" style="padding:20px">还没有门店</div>`;
 
