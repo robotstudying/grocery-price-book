@@ -472,8 +472,8 @@ input,select,textarea{font-size:16px !important;}
 </script>
 <script>
 /* 版本号：日期 + 当日小版本，每次改动递增后一位（v1105.1 → v1105.2 → …） */
-const APP_VER = "v1106.34";
-const APP_BUILD = "2026-11-06 11:28";
+const APP_VER = "v1106.35";
+const APP_BUILD = "2026-11-06 11:35";
 
 /* ============ 存储层：IndexedDB ============ */
 const DB_NAME = "grocery_db";
@@ -551,7 +551,6 @@ async function boot() {
   render();
   registerSW();
   setupStickyHead();
-  setupBottomBar();
 }
 
 /* 表头吸顶：容器高度 = 可视区底部 - 容器顶部 - 底部功能栏预留 */
@@ -582,29 +581,6 @@ function setupStickyHead() {
   apply();
 }
 
-/* 底部功能栏贴底：PWA 独立模式下 iOS 的 100% 高度未必等于屏幕高度，
-   用 visualViewport 的 offsetTop + height 反推真实底部位置 */
-function setupBottomBar() {
-  const bar = document.querySelector(".fab-bar");
-  if (!bar) return;
-  let raf = null;
-  const apply = () => {
-    raf = null;
-    const vv = window.visualViewport;
-    if (!vv) { bar.style.bottom = "0px"; return; }
-    // 视口底部到布局视口底部的距离；正常为 0，PWA 下可能非 0
-    const gap = Math.max(0, window.innerHeight - (vv.offsetTop + vv.height));
-    bar.style.bottom = gap + "px";
-  };
-  const schedule = () => { if (raf) return; raf = requestAnimationFrame(apply); };
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", schedule);
-    window.visualViewport.addEventListener("scroll", schedule);
-  }
-  window.addEventListener("resize", schedule);
-  window.addEventListener("orientationchange", () => setTimeout(schedule, 200));
-  apply();
-}
 
 async function save() {
   state.v = DATA_VERSION;
